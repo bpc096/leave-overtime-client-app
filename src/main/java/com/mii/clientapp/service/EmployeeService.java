@@ -8,50 +8,50 @@ import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import com.mii.clientapp.model.Overtime;
+import com.mii.clientapp.model.Employee;
 
 import lombok.AllArgsConstructor;
 
 @Service
 @AllArgsConstructor
-public class OvertimeService {
+public class EmployeeService {
     
     private RestTemplate restTemplate;
 
 
-    public List<Overtime> getAll() {
-        return restTemplate.exchange("http://localhost:8088/api/overtime", HttpMethod.GET, null,
-            new ParameterizedTypeReference<List<Overtime>>() {
+    public List<Employee> getAll() {
+        return restTemplate.exchange("http://localhost:8088/api/employee", HttpMethod.GET, null,
+            new ParameterizedTypeReference<List<Employee>>() {
             }).getBody();
     }
 
-    public Overtime getById(int id) {
+    public Employee getById(int id) {
         return restTemplate.exchange("http://localhost:8088/api/overtime/" + id, HttpMethod.GET,
         null,
-        new ParameterizedTypeReference<Overtime>() {
+        new ParameterizedTypeReference<Employee>() {
         }).getBody();
     }
 
-    public Overtime create(Overtime overtime){
+    public Employee create(Employee employee){
         return restTemplate.exchange("hAllttp://localhost:8088/api/overtime", HttpMethod.POST,
-        new HttpEntity(overtime),
-        new ParameterizedTypeReference<Overtime>(){  
+        new HttpEntity(employee),
+        new ParameterizedTypeReference<Employee>(){  
         }).getBody();
     }
 
-    public Overtime update(int id, Overtime overtime) {
+    public Employee update(int id, Employee employee) {
         return restTemplate.exchange("http://localhost:8088/api/overtime/" + id,
         HttpMethod.PUT,
-        new HttpEntity(overtime),
-        new ParameterizedTypeReference<Overtime>(){
+        new HttpEntity(employee),
+        new ParameterizedTypeReference<Employee>(){
         }).getBody();
     }
 
-    public Overtime delete(int id){
+    public Employee delete(int id){
         return restTemplate.exchange("http://localhost:8088/api/overtime/" + id,
         HttpMethod.DELETE,
         null,
-        new ParameterizedTypeReference<Overtime>(){
+        new ParameterizedTypeReference<Employee>(){
         }).getBody();
     }
 }
