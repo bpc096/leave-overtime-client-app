@@ -2,7 +2,10 @@ package com.mii.clientapp.service;
 
 import org.springframework.stereotype.Service;
 
+import lombok.AllArgsConstructor;
+
 @Service
-public class LoginService {
+@AllArgsConstructor
+public class ProjectService {
     
 }
