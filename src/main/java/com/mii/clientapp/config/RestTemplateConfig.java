@@ -10,22 +10,27 @@ import org.springframework.web.client.RestTemplate;
 
 // import com.mii.clientapp.util.RequestInterceptor;
 
-// @Configuration
-// public class RestTemplateConfig {
+@Configuration
+public class RestTemplateConfig {
 
-// @Bean
-// public RestTemplate restTemplate() {
-// RestTemplate restTemplate = new RestTemplate();
+    @Bean 
+    public RestTemplate restTemplate(){
+        return new RestTemplate();
+    }
 
-// List<ClientHttpRequestInterceptor> interceptors =
-// restTemplate.getInterceptors();
+    // @Bean
+    // public RestTemplate restTemplate() {
+    //     RestTemplate restTemplate = new RestTemplate();
 
-// if (CollectionUtils.isEmpty(interceptors)) {
-// interceptors = new ArrayList<>();
-// }
-// interceptors.add(new RequestInterceptor());
-// restTemplate.setInterceptors(interceptors);
-// return restTemplate;
-// }
+    //     List<ClientHttpRequestInterceptor> interceptors =
+    //     restTemplate.getInterceptors();
 
-// }
+    //     if (CollectionUtils.isEmpty(interceptors)) {
+    //         interceptors = new ArrayList<>();
+    //     }
+    //     interceptors.add(new RequestInterceptor());
+    //     restTemplate.setInterceptors(interceptors);
+    //     return restTemplate;
+    // }
+
+}
