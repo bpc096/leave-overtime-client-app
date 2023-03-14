@@ -8,34 +8,34 @@ import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import com.mii.clientapp.model.Leave;
 import com.mii.clientapp.model.Overtime;
 
 import lombok.AllArgsConstructor;
 
 @Service
 @AllArgsConstructor
-public class OvertimeService {
+public class LeaveService {
     
     private RestTemplate restTemplate;
 
-
-    public List<Overtime> getAll() {
-        return restTemplate.exchange("http://localhost:8088/api/overtime", HttpMethod.GET, null,
-            new ParameterizedTypeReference<List<Overtime>>() {
+    public List<Leave> getAll() {
+        return restTemplate.exchange("http://localhost:8088/api/leave", HttpMethod.GET, null,
+            new ParameterizedTypeReference<List<Leave>>() {
             }).getBody();
     }
 
-    public Overtime getById(int id) {
-        return restTemplate.exchange("http://localhost:8088/api/overtime/" + id, HttpMethod.GET,
+    public Leave getById(int id) {
+        return restTemplate.exchange("http://localhost:8088/api/leave/" + id, HttpMethod.GET,
         null,
-        new ParameterizedTypeReference<Overtime>() {
+        new ParameterizedTypeReference<Leave>() {
         }).getBody();
     }
 
-    public Overtime create(Overtime overtime){
-        return restTemplate.exchange("hAllttp://localhost:8088/api/overtime", HttpMethod.POST,
+    public Leave create(Leave overtime){
+        return restTemplate.exchange("http://localhost:8088/api/leave", HttpMethod.POST,
         new HttpEntity(overtime),
-        new ParameterizedTypeReference<Overtime>(){  
+        new ParameterizedTypeReference<Leave>(){  
         }).getBody();
     }
 
