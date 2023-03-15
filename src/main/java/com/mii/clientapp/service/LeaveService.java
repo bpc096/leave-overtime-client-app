@@ -19,29 +19,29 @@ public class LeaveService {
     private RestTemplate restTemplate;
 
     public List<Leave> getAll() {
-        return restTemplate.exchange("http://localhost:8088/api/user", HttpMethod.GET, null,
+        return restTemplate.exchange("http://localhost:8088/api/leave", HttpMethod.GET, null,
                 new ParameterizedTypeReference<List<Leave>>() {
                 }).getBody();
     }
 
     public Leave getById(int id) {
-        return restTemplate.exchange("http://localhost:8088/api/user/" + id, HttpMethod.GET, null,
+        return restTemplate.exchange("http://localhost:8088/api/leave/" + id, HttpMethod.GET, null,
                 new ParameterizedTypeReference<Leave>() {
                 }).getBody();
     }
 
     public Leave create(Leave leave) {
-        return restTemplate.exchange("http://localhost:8088/api/user",
+        return restTemplate.exchange("http://localhost:8088/api/leave",
                 HttpMethod.POST,
-                new HttpEntity(leave),
+                new HttpEntity<>(leave),
                 new ParameterizedTypeReference<Leave>() {
                 }).getBody();
     }
 
     public Leave update(int id, Leave leave) {
-        return restTemplate.exchange("http://localhost:8088/api/user/" + id,
+        return restTemplate.exchange("http://localhost:8088/api/leave/" + id,
                 HttpMethod.PUT,
-                new HttpEntity(leave),
+                new HttpEntity<>(leave),
                 new ParameterizedTypeReference<Leave>() {
                 }).getBody();
     }
@@ -53,7 +53,5 @@ public class LeaveService {
                 new ParameterizedTypeReference<Leave>() {
                 }).getBody();
     }
-
-
 
 }
