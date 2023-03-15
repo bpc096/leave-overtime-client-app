@@ -3,7 +3,9 @@ package com.mii.clientapp.model;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
+
 import lombok.*;
+
 
 @Data
 @AllArgsConstructor
@@ -11,6 +13,7 @@ import lombok.*;
 public class OvertimeHistory {
     
     private Integer id;
+
     private LocalTime startTime;
     private LocalTime endTime;
     private LocalDateTime applydate;
@@ -21,4 +24,5 @@ public class OvertimeHistory {
     private String status;
     private String project;
     private Overtime overtime;
+
 }
