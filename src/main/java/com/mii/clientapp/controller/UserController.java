@@ -21,6 +21,12 @@ public class UserController {
         return "layouts/user/index";
     }
 
+    @GetMapping("/{id}")
+    public String getById(Model model, @PathVariable int id) {
+        model.addAttribute("emp", userService.getById(id));
+        return "layouts/user/index";
+    }
+
     @GetMapping("/create-form")
     public String createForm(Model model, User users) {
         model.addAttribute("status", "create");
@@ -34,24 +40,24 @@ public class UserController {
         return "redirect:/user";
     }
 
-    // @GetMapping("/update-form/{id}")
-    // public String updateForm(Model model, @PathVariable int id) {
-    // model.addAttribute("employee", employeeService.getById(id));
-    // model.addAttribute("status", "update");
-    // model.addAttribute("title", "Update Employee");
-    // return "employee/form";
-    // }
+    @GetMapping("/update-form/{id}")
+    public String updateForm(Model model, @PathVariable int id) {
+        model.addAttribute("user", userService.getById(id));
+        model.addAttribute("status", "update");
+        model.addAttribute("title", "Update Employee");
+        return "layouts/user/form";
+    }
 
-    // @PutMapping("/{id}")
-    // public String update(@PathVariable int id, Employee employee) {
-    // employeeService.update(id, employee);
-    // return "redirect:/user";
-    // }
+    @PutMapping("/{id}")
+    public String update(@PathVariable int id, User user) {
+        userService.update(id, user);
+        return "redirect:/user";
+    }
 
-    // @DeleteMapping("/{id}")
-    // public String delete(@PathVariable int id) {
-    // employeeService.delete(id);
-    // return "redirect:/user";
-    // }
+    @DeleteMapping("/{id}")
+    public String delete(@PathVariable int id) {
+        userService.delete(id);
+        return "redirect:/user";
+    }
 
 }

@@ -8,49 +8,48 @@ import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import com.mii.clientapp.model.User;
+import com.mii.clientapp.model.Leave;
 
 import lombok.AllArgsConstructor;
 
 @Service
 @AllArgsConstructor
-public class UserService {
-
+public class LeaveService {
     private RestTemplate restTemplate;
 
-    public List<User> getAll() {
+    public List<Leave> getAll() {
         return restTemplate.exchange("http://localhost:8088/api/user", HttpMethod.GET, null,
-                new ParameterizedTypeReference<List<User>>() {
+                new ParameterizedTypeReference<List<Leave>>() {
                 }).getBody();
     }
 
-    public User getById(int id) {
+    public Leave getById(int id) {
         return restTemplate.exchange("http://localhost:8088/api/user/" + id, HttpMethod.GET, null,
-                new ParameterizedTypeReference<User>() {
+                new ParameterizedTypeReference<Leave>() {
                 }).getBody();
     }
 
-    public User create(User user) {
+    public Leave create(Leave leave) {
         return restTemplate.exchange("http://localhost:8088/api/user",
                 HttpMethod.POST,
-                new HttpEntity(user),
-                new ParameterizedTypeReference<User>() {
+                new HttpEntity(leave),
+                new ParameterizedTypeReference<Leave>() {
                 }).getBody();
     }
 
-    public User update(int id, User user) {
+    public Leave update(int id, Leave leave) {
         return restTemplate.exchange("http://localhost:8088/api/user/" + id,
                 HttpMethod.PUT,
-                new HttpEntity(user),
-                new ParameterizedTypeReference<User>() {
+                new HttpEntity(leave),
+                new ParameterizedTypeReference<Leave>() {
                 }).getBody();
     }
 
-    public User delete(int id) {
+    public Leave delete(int id) {
         return restTemplate.exchange("http://localhost:8088/api/user/" + id,
                 HttpMethod.DELETE,
                 null,
-                new ParameterizedTypeReference<User>() {
+                new ParameterizedTypeReference<Leave>() {
                 }).getBody();
     }
 

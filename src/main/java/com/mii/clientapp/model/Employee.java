@@ -1,7 +1,5 @@
 package com.mii.clientapp.model;
 
-import java.util.Date;
-
 import lombok.*;
 
 @Data
@@ -12,7 +10,7 @@ public class Employee {
     private String name;
     private Integer idmanager;
     private String gender;
-    private Date birthdate;
+    private String birthdate;
     private String address;
     private String email;
     private String phone;
