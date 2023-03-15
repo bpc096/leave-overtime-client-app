@@ -33,7 +33,7 @@ public class UserService {
     public User create(User user) {
         return restTemplate.exchange("http://localhost:8088/api/user",
                 HttpMethod.POST,
-                new HttpEntity(user),
+                new HttpEntity<>(user),
                 new ParameterizedTypeReference<User>() {
                 }).getBody();
     }
@@ -41,7 +41,7 @@ public class UserService {
     public User update(int id, User user) {
         return restTemplate.exchange("http://localhost:8088/api/user/" + id,
                 HttpMethod.PUT,
-                new HttpEntity(user),
+                new HttpEntity<>(user),
                 new ParameterizedTypeReference<User>() {
                 }).getBody();
     }
