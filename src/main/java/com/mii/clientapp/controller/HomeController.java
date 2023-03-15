@@ -9,6 +9,6 @@ public class HomeController {
     @GetMapping
     public String dashboard(Model model) {
         // model.addAttribute("name", "Roland");
-        return "region/index";
+        return "layouts/index";
     }
 }
