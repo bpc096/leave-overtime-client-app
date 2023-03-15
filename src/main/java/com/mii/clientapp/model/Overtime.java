@@ -20,4 +20,5 @@ public class Overtime {
     private Status status;
     private Project project;
     private List<OvertimeHistory> overtimeHistories;
+
 }

@@ -15,6 +15,7 @@ import lombok.AllArgsConstructor;
 @Service
 @AllArgsConstructor
 public class LeaveService {
+
     private RestTemplate restTemplate;
 
     public List<Leave> getAll() {
@@ -52,5 +53,7 @@ public class LeaveService {
                 new ParameterizedTypeReference<Leave>() {
                 }).getBody();
     }
+
+
 
 }
