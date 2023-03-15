@@ -8,6 +8,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import com.mii.clientapp.model.Employee;
 import com.mii.clientapp.model.Project;
 
 import lombok.AllArgsConstructor;
@@ -49,6 +50,14 @@ public class ProjectService {
         return restTemplate.exchange("http://localhost:8088/api/overtime/" + id,
                 HttpMethod.DELETE,
                 null,
+                new ParameterizedTypeReference<Project>() {
+                }).getBody();
+    }
+
+    public Project addEmployee(int id, Employee employee) {
+        return restTemplate.exchange("http://localhost:8088/api/overtime/" + id,
+                HttpMethod.POST,
+                new HttpEntity<>(employee),
                 new ParameterizedTypeReference<Project>() {
                 }).getBody();
     }
