@@ -182,7 +182,7 @@
                                 <li class="nav-item active"><a class="nav-link" href="#!">Home</a></li>
                                 <li class="nav-item"><a class="nav-link" href="#!">Link</a></li>
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Profile</a>
                                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="#!">My Leave</a>
                                         <a class="dropdown-item" href="#!">My Overtime</a>
@@ -252,7 +252,8 @@
                                             <form class="row">
                                                 <label for="date" class="form-label">Date of Birth</label>
                                                 <div class="input-group date" id="datepicker">
-                                                    <input type="text" class="form-control" id="date" th:field="*{date.format(employee.birthdate, 'yyyy-MM-dd') }"/>
+                                                    <!-- <input type="text" class="form-control" id="date" th:field="*{date.format(employee.birthdate, 'yyyy-MM-dd') }"/> -->
+                                                    <input type="text" class="form-control" id="date" th:field="*{employee.birthdate}"/>
                                                     <span class="input-group-append">
                                                     <span class="input-group-text bg-light d-block">
                                                         <i class="fa fa-calendar"></i>

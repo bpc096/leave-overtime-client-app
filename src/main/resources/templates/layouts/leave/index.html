@@ -181,7 +181,7 @@
                                 <li class="nav-item active"><a class="nav-link" href="#!">Home</a></li>
                                 <li class="nav-item"><a class="nav-link" href="#!">Link</a></li>
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Profile</a>
                                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="#!">My Leave</a>
                                         <a class="dropdown-item" href="#!">My Overtime</a>
@@ -195,7 +195,7 @@
                 </nav>
                 <!-- Page content-->
                 <div class="container-fluid">
-                    <h3 class="mt-4"> Manage Employees </h3>
+                    <h3 class="mt-4"> Manage Leave </h3>
                     <p>The starting state of the menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will change.</p>
                     <p>
                         Make sure to keep all page content within the
@@ -256,7 +256,7 @@
                                                     </form>
                                                 </td> -->
                                                 <td>
-                                                    <a th:href="@{/user/{id} (id=${user.employee.id})}" class="view" title="View" data-bs-toggle="modal" data-bs-target="#detailEmployee"><i class="material-icons">&#xE417;</i></a>
+                                                    <a th:href="@{/leave/{id} (id=${leave.employee.id})}" class="view" title="View" data-bs-toggle="modal" data-bs-target="#detailEmployee"><i class="material-icons">&#xE417;</i></a>
                                                     <a href="#" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
                                                     <!-- <form th:action="@{/user/{id} (id = ${user.id})}" th:method="DELETE"
                                                         onclick="return confirm('Are you sure want to delete this data???')">
@@ -288,7 +288,7 @@
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">Detail Employee</h1>
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Detail Leave</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">

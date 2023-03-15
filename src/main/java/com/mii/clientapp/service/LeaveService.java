@@ -47,7 +47,7 @@ public class LeaveService {
     }
 
     public Leave delete(int id) {
-        return restTemplate.exchange("http://localhost:8088/api/user/" + id,
+        return restTemplate.exchange("http://localhost:8088/api/leave/" + id,
                 HttpMethod.DELETE,
                 null,
                 new ParameterizedTypeReference<Leave>() {
