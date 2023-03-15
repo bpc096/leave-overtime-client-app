@@ -2,25 +2,38 @@ package com.mii.clientapp.controller;
 
 import com.mii.clientapp.model.Employee;
 import com.mii.clientapp.model.Project;
+import com.mii.clientapp.service.EmployeeService;
 import com.mii.clientapp.service.ProjectService;
 
+import lombok.AllArgsConstructor;
+
+import java.util.List;
+
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+@Controller
+@RequestMapping("/project")
+@AllArgsConstructor
 public class ProjectController {
+    
     private ProjectService projectService;
+    private EmployeeService employeeService;
 
     @GetMapping
     public String getAll(Model model) {
-        model.addAttribute("countries", projectService.getAll());
-        return "project/index";
+        model.addAttribute("projects", projectService.getAll());
+        return "layouts/project/index";
     }
 
     @GetMapping("/create-form")
     public String createForm(Model model, Project project) {
+        List<Employee> lemp = employeeService.getAll();
         model.addAttribute("status", "create");
         model.addAttribute("title", "Create Project");
-        return "project/form";
+        model.addAttribute("listEmployees", lemp);
+        return "layouts/project/form";
     }
 
     @PostMapping
@@ -34,7 +47,7 @@ public class ProjectController {
         model.addAttribute("project", projectService.getById(id));
         model.addAttribute("status", "update");
         model.addAttribute("title", "Update project");
-        return "project/form";
+        return "layouts/project/form";
     }
 
     @PutMapping("/{id}")

@@ -32,7 +32,7 @@ public class ProjectService {
     }
 
     public Project create(Project project) {
-        return restTemplate.exchange("hAllttp://localhost:8088/api/project", HttpMethod.POST,
+        return restTemplate.exchange("http://localhost:8088/api/project", HttpMethod.POST,
                 new HttpEntity<>(project),
                 new ParameterizedTypeReference<Project>() {
                 }).getBody();

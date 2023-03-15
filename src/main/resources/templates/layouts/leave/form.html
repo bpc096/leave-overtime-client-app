@@ -196,7 +196,7 @@
                 </nav>
                 <!-- Page content-->
                 <div class="container-fluid">
-                    <h3 class="mt-4"> Employee Form </h3>
+                    <h3 class="mt-4"> Leave Form </h3>
                     <p>The starting state of the menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will change.</p>
                     <p>
                         Make sure to keep all page content within the
@@ -208,51 +208,39 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex justify-content-lg-start align-items-center pt-1 pb-2"></div>
-                            <form th:action="${status} == 'create' ? @{'/leave'} : @{'/leave/{id}' (id = ${leave.id})} "
-                                th:method="${status == 'create' ? 'POST' : 'PUT'}" th:object="${leave}">
-                                <div class="container px-5 my-5">
-                                    <form id="contactForm" data-sb-form-api-token="API_TOKEN" th:action="${status} == 'create' ? @{'/leave'} : @{'/leave/{id}' (id = ${leave.id})} "
+                            <div class="container px-5 my-5">
+                                <form th:action="${status} == 'create' ? @{'/leave'} : @{'/leave/{id}' (id = ${leave.id})} "
                                     th:method="${status == 'create' ? 'POST' : 'PUT'}" th:object="${leave}">
-                                        <div class="mb-3">
-                                            <label class="form-label" for="startday">Start Date</label>
-                                            <input class="form-control" id="startday" type="text" placeholder="StartDate" data-sb-validations="required"  th:field="*{startday}" />
-                                            <div class="invalid-feedback" data-sb-feedback="username:required">Start Date is required.</div>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label class="form-label" for="endday">End Date</label>
-                                            <input class="form-control" id="endday" type="text" placeholder="EndDate" data-sb-validations="required"  th:field="*{endday}" />
-                                            <div class="invalid-feedback" data-sb-feedback="endday:required">End Date is required.</div>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label class="form-label" for="updateby">Update By</label>
-                                            <input class="form-control" id="updateby" type="text" placeholder="UpdateBy" data-sb-validations="required"  th:field="*{updateby}" />
-                                        </div>
-                                        <div class="mb-3">
-                                            <label class="form-label" for="email">Reason</label>
-                                            <input class="form-control" id="email" type="text" placeholder="Reason" data-sb-validations="required" th:field="*{reason}"/>
-                                            <div class="invalid-feedback" data-sb-feedback="reason:required">Reason is required.</div>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label class="form-label" for="employee">Requested by</label>
-                                            <input class="form-control" id="employee" type="text" placeholder="RequestedBy" data-sb-validations="required" th:field="*{employee.name}"/>
-                                        </div>
-                                        <div class="d-none" id="submitSuccessMessage">
-                                            <div class="text-center mb-3">
-                                                <div class="fw-bolder">Form submission successful!</div>
-                                                <p>To activate this form, sign up at</p>
-                                                <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
-                                            </div>
-                                        </div>
-                                        <div class="d-none" id="submitErrorMessage">
-                                            <div class="text-center text-danger mb-3">Error sending message!</div>
-                                        </div>
-                                        <div class="d-grid">
-                                            <button class="btn btn-primary btn-lg" id="submitButton" type="submit">Submit</button>
-                                        </div>
-                                    </form>
-                                </div>
-                                <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-                            </form>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="startdate">Start Date</label>
+                                        <input class="form-control" id="startdate" type="text" placeholder="Start Date" data-sb-validations="required"  th:field="*{startday}" />
+                                        <div class="invalid-feedback" data-sb-feedback="startdate:required">Start Date is required.</div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="enddate">End Date</label>
+                                        <input class="form-control" id="enddate" type="text" placeholder="End Date" data-sb-validations="required"  th:field="*{endday}" />
+                                        <div class="invalid-feedback" data-sb-feedback="enddate:required">End Date is required.</div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="updateby">Update By</label>
+                                        <input class="form-control" id="updateby" type="text" placeholder="Update By" data-sb-validations="required"  th:field="*{updateby}" />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="reason">Reason</label>
+                                        <input class="form-control" id="reason" type="text" placeholder="Reason" data-sb-validations="required"  th:field="*{reason}" />
+                                        <div class="invalid-feedback" data-sb-feedback="reason:required">Reason is required.</div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="employeeid">Employee ID</label>
+                                        <input class="form-control" id="employeeid" type="text" placeholder="Employee Id" data-sb-validations="required"  th:field="*{employee.id}" />
+                                        <div class="invalid-feedback" data-sb-feedback="employeeid:required">Employee is required.</div>
+                                    </div>
+                                    <div class="d-grid">
+                                        <button class="btn btn-primary btn-lg" id="submitButton" type="submit">Submit</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
                         </div>   
                     </div>
                 </div>

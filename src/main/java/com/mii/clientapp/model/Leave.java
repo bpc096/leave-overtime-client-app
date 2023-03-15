@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Leave {
-
+    private Integer id;
     private String startday;
     private String endday;
     private String applydate;
@@ -24,5 +24,6 @@ public class Leave {
     private Status status;
     private List<LeaveHistory> leavesHistories;
 
-    DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+    // DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy
+    // HH:mm:ss");
 }
