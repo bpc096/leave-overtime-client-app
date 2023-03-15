@@ -8,7 +8,6 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Overtime {
-
     private Integer id;
     private String startTime;
     private String endTime;

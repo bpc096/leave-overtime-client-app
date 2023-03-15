@@ -208,93 +208,92 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex justify-content-lg-start align-items-center pt-1 pb-2"></div>
-                            <form th:action="${status} == 'create' ? @{'/user'} : @{'/user/{id}' (id = ${user.employee.id})} "
+                            <div class="container px-5 my-5">
+                                <form th:action="${status} == 'create' ? @{'/user'} : @{'/user/{id}' (id = ${user.employee.id})} "
                                 th:method="${status == 'create' ? 'POST' : 'PUT'}" th:object="${user}">
-                                <div class="container px-5 my-5">
-                                    <form id="contactForm" data-sb-form-api-token="API_TOKEN" th:action="${status} == 'create' ? @{'/user'} : @{'/user/{id}' (id = ${user.employee.id})} "
-                                    th:method="${status == 'create' ? 'POST' : 'PUT'}" th:object="${user}">
-                                        <div class="mb-3">
-                                            <label class="form-label" for="username">Username</label>
-                                            <input class="form-control" id="username" type="text" placeholder="Username" data-sb-validations="required"  th:field="*{username}" />
-                                            <div class="invalid-feedback" data-sb-feedback="username:required">Username is required.</div>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label class="form-label" for="password">Password</label>
-                                            <input class="form-control" id="password" type="password" placeholder="Password" data-sb-validations="required"  th:field="*{password}" />
-                                            <div class="invalid-feedback" data-sb-feedback="password:required">Password is required.</div>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label class="form-label" for="name">Name</label>
-                                            <input class="form-control" id="name" type="text" placeholder="Name" data-sb-validations="required"  th:field="*{employee.name}" />
-                                            <div class="invalid-feedback" data-sb-feedback="name:required">Name is required.</div>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label class="form-label" for="email">Email</label>
-                                            <input class="form-control" id="email" type="email" placeholder="Email" data-sb-validations="required,email" th:field="*{employee.email}"/>
-                                            <div class="invalid-feedback" data-sb-feedback="email:required">Email is required.</div>
-                                            <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label class="form-label" for="phoneNumber">Phone Number</label>
-                                            <input class="form-control" id="phoneNumber" type="text" placeholder="Phone Number" data-sb-validations="required" th:field="*{employee.phone}"/>
-                                            <div class="invalid-feedback" data-sb-feedback="phoneNumber:required">Phone Number is required.</div>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label class="form-label" for="address">Address</label>
-                                            <input class="form-control" id="address" type="text" placeholder="Address" data-sb-validations="required" th:field="*{employee.address}"/>
-                                            <div class="invalid-feedback" data-sb-feedback="address:required">Address is required.</div>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label class="form-label" for="idmanager">Manager</label>
-                                            <input class="form-control" id="idmanager" type="text" placeholder="Manager" data-sb-validations="required" th:field="*{employee.idmanager}"/>
-                                        </div>
-                                        <div class="mb-3">
-                                            <form class="row">
-                                                <label for="date" class="form-label">Date of Birth</label>
-                                                <div class="input-group date" id="datepicker">
-                                                    <!-- <input type="text" class="form-control" id="date" th:field="*{date.format(employee.birthdate, 'yyyy-MM-dd') }"/> -->
-                                                    <input type="text" class="form-control" id="date" th:field="*{employee.birthdate}"/>
-                                                    <span class="input-group-append">
-                                                    <span class="input-group-text bg-light d-block">
-                                                        <i class="fa fa-calendar"></i>
-                                                    </span>
-                                                    </span>
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <div class="mb-3">
-                                            <!-- <label class="form-label d-block">Gender</label>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" id="male" type="radio" name="gender" data-sb-validations="required" th:field="*{employee.gender}" th:value="${employee.gender}"/>
-                                                <label class="form-check-label" for="male">Male</label>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="username">Username</label>
+                                        <input class="form-control" id="username" type="text" placeholder="Username" data-sb-validations="required"  th:field="*{username}" />
+                                        <div class="invalid-feedback" data-sb-feedback="username:required">Username is required.</div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="password">Password</label>
+                                        <input class="form-control" id="password" type="password" placeholder="Password" data-sb-validations="required"  th:field="*{password}" />
+                                        <div class="invalid-feedback" data-sb-feedback="password:required">Password is required.</div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="name">Name</label>
+                                        <input class="form-control" id="name" type="text" placeholder="Name" data-sb-validations="required"  th:field="*{employee.name}" />
+                                        <div class="invalid-feedback" data-sb-feedback="name:required">Name is required.</div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="email">Email</label>
+                                        <input class="form-control" id="email" type="email" placeholder="Email" data-sb-validations="required,email" th:field="*{employee.email}"/>
+                                        <div class="invalid-feedback" data-sb-feedback="email:required">Email is required.</div>
+                                        <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="phoneNumber">Phone Number</label>
+                                        <input class="form-control" id="phoneNumber" type="text" placeholder="Phone Number" data-sb-validations="required" th:field="*{employee.phone}"/>
+                                        <div class="invalid-feedback" data-sb-feedback="phoneNumber:required">Phone Number is required.</div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="address">Address</label>
+                                        <input class="form-control" id="address" type="text" placeholder="Address" data-sb-validations="required" th:field="*{employee.address}"/>
+                                        <div class="invalid-feedback" data-sb-feedback="address:required">Address is required.</div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="idmanager">Manager</label>
+                                        <input class="form-control" id="idmanager" type="text" placeholder="Manager" data-sb-validations="required" th:field="*{employee.idmanager}"/>
+                                    </div>
+                                    <div class="mb-3">
+                                        <!-- <form class="row">
+                                            <label for="date" class="form-label">Date of Birth</label>
+                                            <div class="input-group date" id="datepicker"> -->
+                                                <!-- <input type="text" class="form-control" id="date" th:field="*{date.format(employee.birthdate, 'yyyy-MM-dd') }"/> -->
+                                                <!-- <input type="text" class="form-control" id="date" th:field="*{employee.birthdate}"/>
+                                                <span class="input-group-append">
+                                                <span class="input-group-text bg-light d-block">
+                                                    <i class="fa fa-calendar"></i>
+                                                </span>
+                                                </span>
                                             </div>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" id="female" type="radio" name="gender" data-sb-validations="required" th:field="*{employee.gender}" th:value="${employee.gender}"/>
-                                                <label class="form-check-label" for="female">Female</label>
-                                            </div>
-                                            <div class="invalid-feedback" data-sb-feedback="gender:required">One option is required.</div> -->
-                                            <div class="mb-3">
-                                                <label class="form-label" for="gender">Gender</label>
-                                                <input class="form-control" id="gender" type="text" placeholder="Gender" data-sb-validations="required" th:field="*{employee.gender}"/>
-                                            </div>
+                                        </form> -->
+                                        <label class="form-label" for="birthdate">Birthdate</label>
+                                        <input class="form-control" id="birthdate" type="text" placeholder="Birthdate" data-sb-validations="required" th:field="*{employee.birthdate}"/>
+                                    </div>
+                                    <div class="mb-3">
+                                        <!-- <label class="form-label d-block">Gender</label>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" id="male" type="radio" name="gender" data-sb-validations="required" th:field="*{employee.gender}" th:value="${employee.gender}"/>
+                                            <label class="form-check-label" for="male">Male</label>
                                         </div>
-                                        <div class="d-none" id="submitSuccessMessage">
-                                            <div class="text-center mb-3">
-                                                <div class="fw-bolder">Form submission successful!</div>
-                                                <p>To activate this form, sign up at</p>
-                                                <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
-                                            </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" id="female" type="radio" name="gender" data-sb-validations="required" th:field="*{employee.gender}" th:value="${employee.gender}"/>
+                                            <label class="form-check-label" for="female">Female</label>
                                         </div>
-                                        <div class="d-none" id="submitErrorMessage">
-                                            <div class="text-center text-danger mb-3">Error sending message!</div>
+                                        <div class="invalid-feedback" data-sb-feedback="gender:required">One option is required.</div> -->
+                                        <div class="mb-3">
+                                            <label class="form-label" for="gender">Gender</label>
+                                            <input class="form-control" id="gender" type="text" placeholder="Gender" data-sb-validations="required" th:field="*{employee.gender}"/>
                                         </div>
-                                        <div class="d-grid">
-                                            <button class="btn btn-primary btn-lg" id="submitButton" type="submit">Submit</button>
+                                    </div>
+                                    <!-- <div class="d-none" id="submitSuccessMessage">
+                                        <div class="text-center mb-3">
+                                            <div class="fw-bolder">Form submission successful!</div>
+                                            <p>To activate this form, sign up at</p>
+                                            <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
                                         </div>
-                                    </form>
-                                </div>
-                                <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-                            </form>
+                                    </div>
+                                    <div class="d-none" id="submitErrorMessage">
+                                        <div class="text-center text-danger mb-3">Error sending message!</div>
+                                    </div> -->
+                                    <div class="d-grid">
+                                        <button class="btn btn-primary btn-lg" id="submitButton" type="submit">Submit</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
                         </div>   
                     </div>
                 </div>

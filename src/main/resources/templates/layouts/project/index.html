@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title> Manage Employees </title>
+        <title>Manage Projects</title>
         <!-- Favicon-->
         <!-- <link rel="icon" type="image/x-icon" href="assets/favicon.ico" /> -->
         <!-- Core theme CSS (includes Bootstrap)-->
@@ -183,7 +183,7 @@
                                 <li class="nav-item active"><a class="nav-link" href="#!">Home</a></li>
                                 <li class="nav-item"><a class="nav-link" href="#!">Link</a></li>
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Profile </a>
+                                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
                                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="#!">My Leave</a>
                                         <a class="dropdown-item" href="#!">My Overtime</a>
@@ -197,7 +197,7 @@
                 </nav>
                 <!-- Page content-->
                 <div class="container-fluid">
-                    <h3 class="mt-4"> Manage Employees </h3>
+                    <h3 class="mt-4"> Manage Projects </h3>
                     <p>The starting state of the menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will change.</p>
                     <p>
                         Make sure to keep all page content within the
@@ -213,48 +213,34 @@
                                 <div class="table-wrapper">
                                     <div class="table-title">
                                         <div class="row">
-                                            <div class="col-sm-8"><h2>Employee <b>Details</b></h2></div>
+                                            <div class="col-sm-8"><h2>Project <b>Details</b></h2></div>
                                             <div class="col-sm-4">
                                                 <div class="d-flex justify-content-between align-items-center">
-                                                    <a class="btn btn-success" th:href="@{/user/create-form}">Add Employee</a>
+                                                    <a class="btn btn-success" th:href="@{/project/create-form}">Add Project</a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <table class="table table-striped table-hover table-bordered" id="UserTable">
+                                    <table class="table table-striped table-hover table-bordered" id="ProjectTable">
                                         <thead>
                                             <tr>
-                                                <th class="col-1">Name <i class="fa fa-sort"></i></th>
-                                                <th class="col-1">Gender<i class="fa fa-sort"></i></th>
-                                                <th class="col-1">DOB<i class="fa fa-sort"></i></th>
-                                                <th class="col-1">Address<i class="fa fa-sort"></i></th>
-                                                <th class="col-1">Email<i class="fa fa-sort"></i></th>
-                                                <th class="col-1">Phone<i class="fa fa-sort"></i></th>
-                                                <th class="col-1">Manager<i class="fa fa-sort"></i></th>
+                                                <th class="col-1">Project Title <i class="fa fa-sort"></i></th>
+                                                <th class="col-1">Budget<i class="fa fa-sort"></i></th>
+                                                <th class="col-1">Project Team<i class="fa fa-sort"></i></th>
+                                                <th class="col-1">Project Overtime<i class="fa fa-sort"></i></th>
                                                 <th class="col-1">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr th:each="user : ${users}">
-                                                <td th:text="${user.employee.name}"></td>
-                                                <td th:text="${user.employee.gender}"></td>
-                                                <td th:text="${user.employee.birthdate}"></td>
-                                                <td th:text="${user.employee.address}"></td>
-                                                <td th:text="${user.employee.email}"></td>
-                                                <td th:text="${user.employee.phone}"></td>
-                                                <td th:text="${user.employee.idmanager}"></td>
-                                                <!-- <td class="d-flex gap-3">
-                                                    <a class="btn btn-warning px-5"
-                                                        th:href="@{/user/update-form/{id} (id = ${user.id})}"> Edit </a>
-                                                    <form th:action="@{/user/{id} (id = ${user.id})}" th:method="DELETE"
-                                                        onclick="return confirm('Are you sure want to delete this data???')">
-                                                        <button class="btn btn-danger px-5"> Delete </button>
-                                                    </form>
-                                                </td> -->
+                                            <tr th:each="project : ${projects}">
+                                                <td th:text="${project.name}"></td>
+                                                <td th:text="${project.overtimeBudget}"></td>
+                                                <td th:text="${project.employees}"></td>
+                                                <td th:text="${project.overtime}"></td>
                                                 <td>
-                                                    <a th:href="@{/user/{id} (id=${user.employee.id})}" class="view" title="View" data-bs-toggle="modal" data-bs-target="#detailEmployee"><i class="material-icons">&#xE417;</i></a>
-                                                    <a th:href="@{/user/update-form/{id} (id = ${user.employee.id})}" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                                                    <form th:action="@{/user/{id} (id = ${user.employee.id})}" th:method="DELETE"
+                                                    <a th:href="@{/project/{id} (id=${project.id})}" class="view" title="View" data-bs-toggle="modal" data-bs-target="#detailProject"><i class="material-icons">&#xE417;</i></a>
+                                                    <a th:href="@{/project/update-form/{id} (id = ${project.id})}" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                                                    <form th:action="@{/project/{id} (id = ${project.id})}" th:method="DELETE"
                                                         onclick="return confirm('Are you sure want to delete this data???')">
                                                         <button class="btn btn-danger px-1" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i> </button>
                                                     </form>
@@ -268,7 +254,7 @@
                     </div>
                 </div>
                 <!-- Modal Detail Employee -->
-                <div class="modal fade" id="detailEmployee" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="detailProject" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -313,17 +299,17 @@
         <script src="../vendor/js/script.js"></script>
         <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.25/datatables.min.js"></script>
         <script>
+            $(document).ready(function () {
+                $("#ProjectTable").DataTable({
+                    
+                });
+            })
+        </script>
+        <script>
             $("#sidebarToggle").click(function(e) {
                 e.preventDefault();
                 $("#wrapper").toggleClass("toggled");
             });
-        </script>
-        <script>
-            $(document).ready(function () {
-                $("#UserTable").DataTable({
-                    
-                });
-            })
         </script>
         <script th:src="@{/js/user.js}"></script>
     </body>
