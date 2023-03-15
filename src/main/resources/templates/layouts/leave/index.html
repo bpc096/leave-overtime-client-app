@@ -256,7 +256,7 @@
                                                     </form>
                                                 </td> -->
                                                 <td>
-                                                    <a th:href="@{/user/{id} (id=${user.employee.id})}" class="view" title="View" data-bs-toggle="modal" data-bs-target="#detailEmployee"><i class="material-icons">&#xE417;</i></a>
+                                                    <a th:href="@{/leave/{id} (id=${leave.employee.id})}" class="view" title="View" data-bs-toggle="modal" data-bs-target="#detailEmployee"><i class="material-icons">&#xE417;</i></a>
                                                     <a href="#" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
                                                     <!-- <form th:action="@{/user/{id} (id = ${user.id})}" th:method="DELETE"
                                                         onclick="return confirm('Are you sure want to delete this data???')">
@@ -288,7 +288,7 @@
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">Detail Employee</h1>
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Detail Leave</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
