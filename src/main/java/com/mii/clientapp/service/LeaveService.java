@@ -32,26 +32,26 @@ public class LeaveService {
         }).getBody();
     }
 
-    public Leave create(Leave overtime){
+    public Leave create(Leave leave){
         return restTemplate.exchange("http://localhost:8088/api/leave", HttpMethod.POST,
-        new HttpEntity(overtime),
+        new HttpEntity(leave),
         new ParameterizedTypeReference<Leave>(){  
         }).getBody();
     }
 
-    public Overtime update(int id, Overtime overtime) {
-        return restTemplate.exchange("http://localhost:8088/api/overtime/" + id,
+    public Leave update(int id, Leave leave) {
+        return restTemplate.exchange("http://localhost:8088/api/leave/" + id,
         HttpMethod.PUT,
-        new HttpEntity(overtime),
-        new ParameterizedTypeReference<Overtime>(){
+        new HttpEntity(leave),
+        new ParameterizedTypeReference<Leave>(){
         }).getBody();
     }
 
-    public Overtime delete(int id){
-        return restTemplate.exchange("http://localhost:8088/api/overtime/" + id,
+    public Leave delete(int id){
+        return restTemplate.exchange("http://localhost:8088/api/leave/" + id,
         HttpMethod.DELETE,
         null,
-        new ParameterizedTypeReference<Overtime>(){
+        new ParameterizedTypeReference<Leave>(){
         }).getBody();
     }
 }

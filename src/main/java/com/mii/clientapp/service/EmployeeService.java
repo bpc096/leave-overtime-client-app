@@ -33,7 +33,7 @@ public class EmployeeService {
     }
 
     public Employee create(Employee employee){
-        return restTemplate.exchange("hAllttp://localhost:8088/api/overtime", HttpMethod.POST,
+        return restTemplate.exchange("http://localhost:8088/api/overtime", HttpMethod.POST,
         new HttpEntity(employee),
         new ParameterizedTypeReference<Employee>(){  
         }).getBody();
