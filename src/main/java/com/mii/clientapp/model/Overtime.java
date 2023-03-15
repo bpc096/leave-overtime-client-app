@@ -19,6 +19,5 @@ public class Overtime {
     private Employee employee;
     private Status status;
     private Project project;
-    private List<OvertimeHistory> overtimeHistories;
 
 }
