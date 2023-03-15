@@ -15,43 +15,42 @@ import lombok.AllArgsConstructor;
 @Service
 @AllArgsConstructor
 public class OvertimeService {
-    
-    private RestTemplate restTemplate;
 
+    private RestTemplate restTemplate;
 
     public List<Overtime> getAll() {
         return restTemplate.exchange("http://localhost:8088/api/overtime", HttpMethod.GET, null,
-            new ParameterizedTypeReference<List<Overtime>>() {
-            }).getBody();
+                new ParameterizedTypeReference<List<Overtime>>() {
+                }).getBody();
     }
 
     public Overtime getById(int id) {
         return restTemplate.exchange("http://localhost:8088/api/overtime/" + id, HttpMethod.GET,
-        null,
-        new ParameterizedTypeReference<Overtime>() {
-        }).getBody();
+                null,
+                new ParameterizedTypeReference<Overtime>() {
+                }).getBody();
     }
 
-    public Overtime create(Overtime overtime){
+    public Overtime create(Overtime overtime) {
         return restTemplate.exchange("hAllttp://localhost:8088/api/overtime", HttpMethod.POST,
-        new HttpEntity(overtime),
-        new ParameterizedTypeReference<Overtime>(){  
-        }).getBody();
+                new HttpEntity<>(overtime),
+                new ParameterizedTypeReference<Overtime>() {
+                }).getBody();
     }
 
     public Overtime update(int id, Overtime overtime) {
         return restTemplate.exchange("http://localhost:8088/api/overtime/" + id,
-        HttpMethod.PUT,
-        new HttpEntity(overtime),
-        new ParameterizedTypeReference<Overtime>(){
-        }).getBody();
+                HttpMethod.PUT,
+                new HttpEntity<>(overtime),
+                new ParameterizedTypeReference<Overtime>() {
+                }).getBody();
     }
 
-    public Overtime delete(int id){
+    public Overtime delete(int id) {
         return restTemplate.exchange("http://localhost:8088/api/overtime/" + id,
-        HttpMethod.DELETE,
-        null,
-        new ParameterizedTypeReference<Overtime>(){
-        }).getBody();
+                HttpMethod.DELETE,
+                null,
+                new ParameterizedTypeReference<Overtime>() {
+                }).getBody();
     }
 }

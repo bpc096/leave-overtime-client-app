@@ -1,5 +1,6 @@
 package com.mii.clientapp.controller;
 
+import com.mii.clientapp.model.Employee;
 import com.mii.clientapp.model.Project;
 import com.mii.clientapp.service.ProjectService;
 
@@ -45,6 +46,12 @@ public class ProjectController {
     @DeleteMapping(value = "/{id}")
     public String delete(@PathVariable Integer id, Project project) {
         projectService.delete(id);
+        return "redirect:/project";
+    }
+
+    @PostMapping(value = "/{id}")
+    public String addEmployee(@PathVariable Integer id, Employee employee) {
+        projectService.addEmployee(id, employee);
         return "redirect:/project";
     }
 }
