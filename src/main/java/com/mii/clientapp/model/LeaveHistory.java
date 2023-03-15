@@ -1,28 +1,24 @@
 package com.mii.clientapp.model;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 
-
-import lombok.*;
-
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class OvertimeHistory {
-    
+public class LeaveHistory {
     private Integer id;
-
-    private LocalTime startTime;
-    private LocalTime endTime;
+    private LocalDate startday;
+    private LocalDate endday;
     private LocalDateTime applydate;
-    private String purpose;
     private String updateby;
+    private String reason;
     private LocalDateTime respontime;
     private String employee;
     private String status;
-    private String project;
-    private Overtime overtime;
-
+    private Leave leave;
 }

@@ -38,20 +38,20 @@ public class UserService {
                 }).getBody();
     }
 
-    // public Employee update(int id, Employee region) {
-    // return restTemplate.exchange("http://localhost:8088/api/user/" + id,
-    // HttpMethod.PUT,
-    // new HttpEntity(region),
-    // new ParameterizedTypeReference<Employee>() {
-    // }).getBody();
-    // }
+    public User update(int id, User user) {
+        return restTemplate.exchange("http://localhost:8088/api/user/" + id,
+                HttpMethod.PUT,
+                new HttpEntity(user),
+                new ParameterizedTypeReference<User>() {
+                }).getBody();
+    }
 
-    // public Employee delete(int id) {
-    // return restTemplate.exchange("http://localhost:8088/api/user/" + id,
-    // HttpMethod.DELETE,
-    // null,
-    // new ParameterizedTypeReference<Employee>() {
-    // }).getBody();
-    // }
+    public User delete(int id) {
+        return restTemplate.exchange("http://localhost:8088/api/user/" + id,
+                HttpMethod.DELETE,
+                null,
+                new ParameterizedTypeReference<User>() {
+                }).getBody();
+    }
 
 }
