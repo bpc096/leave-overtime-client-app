@@ -23,7 +23,7 @@ public class Leave {
     private LocalDateTime respontime;
     private Employee employee;
     private Status status;
-    private List<LeaveHistory> leavesHistories;
+    private LeaveHistory leavesHistories;
 
     // DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy
     // HH:mm:ss");

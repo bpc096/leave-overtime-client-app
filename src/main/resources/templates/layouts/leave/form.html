@@ -211,27 +211,33 @@
                                 <form th:action="${status} == 'create' ? @{'/leave'} : @{'/leave/{id}' (id = ${leave.id})} "
                                     th:method="${status == 'create' ? 'POST' : 'PUT'}" th:object="${leave}">
                                     <div class="mb-3">
-                                        <!-- <label class="form-label" for="startdate">Start Date</label> -->
-                                        <input class="form-control" id="startdate" type="hidden" placeholder="Start Date" data-sb-validations="required"  th:field="*{startday}" />
+                                        <label th:if="${status} == 'create'" class="form-label" for="startdate">Start Date</label>
+                                        <input class="form-control" id="startdate" type="text" placeholder="Start Date" data-sb-validations="required"  th:field="*{startday}" />
                                         <div class="invalid-feedback" data-sb-feedback="startdate:required">Start Date is required.</div>
                                     </div>
                                     <div class="mb-3">
-                                        <!-- <label class="form-label" for="enddate">End Date</label> -->
-                                        <input class="form-control" id="enddate" type="hidden" placeholder="End Date" data-sb-validations="required"  th:field="*{endday}" />
+                                        <label th:if="${status} == 'create'"  class="form-label" for="enddate">End Date</label>
+                                        <input class="form-control" id="enddate" type="text" placeholder="End Date" data-sb-validations="required"  th:field="*{endday}" />
                                         <div class="invalid-feedback" data-sb-feedback="enddate:required">End Date is required.</div>
                                     </div>
                                     <div class="mb-3">
-                                        <!-- <label class="form-label" for="updateby">Update By</label> -->
-                                        <input class="form-control" id="updateby" type="hidden" placeholder="Update By" data-sb-validations="required"  th:field="*{updateby}" />
+                                        <label th:if="${status} == 'create'"  class="form-label" for="updateby">Update By</label>
+                                        <input class="form-control" id="updateby" type="text" placeholder="Update By" data-sb-validations="required"  th:field="*{updateby}" />
+                                    </div>
+                                    <!-- th:if="${status} =! 'create'" -->
+                                    <div class="mb-3" >
+                                        <label th:if="${status} == 'create'"  class="form-label" for="status">Status</label>
+                                        <input class="form-control" id="status" type="text" placeholder="Status" data-sb-validations="required"  th:field="*{status.name}" />
                                     </div>
                                     <div class="mb-3">
-                                        <!-- <label class="form-label" for="reason">Reason</label> -->
-                                        <input class="form-control" id="reason" type="hidden" placeholder="Reason" data-sb-validations="required"  th:field="*{reason}" />
+                                        <label th:if="${status} == 'create'" class="form-label" for="reason">Reason</label>
+                                        <input class="form-control" id="reason" type="text" placeholder="Reason" data-sb-validations="required"  th:field="*{reason}" />
                                         <div class="invalid-feedback" data-sb-feedback="reason:required">Reason is required.</div>
                                     </div>
                                     <div class="mb-3">
-                                        <!-- <label class="form-label" for="employeeid">Employee ID</label> -->
-                                        <input class="form-control" id="employeeid" type="hidden" placeholder="Employee Id" data-sb-validations="required"  th:field="*{employee.id}" />
+                                        <label th:if="${status} == 'create'" class="form-label" for="employeeid">Employee</label>
+                                        <input class="form-control" id="employeeid" type="text" placeholder="Employee Id" data-sb-validations="required"  th:field="*{employee.name}" 
+                                        value="*{}"/>
                                         <div class="invalid-feedback" data-sb-feedback="employeeid:required">Employee is required.</div>
                                     </div>
                                     <div class="d-grid">
