@@ -13,7 +13,7 @@
     <!--  DataTables CSS CDN  -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.css">
 
-    <title>Leave Overtime Management System</title>
+    <title>Login</title>
 </head>
 
 <body>
@@ -27,12 +27,12 @@
 					<div class="card shadow-lg">
 						<div class="card-body p-5">
 							<h1 class="fs-4 card-title fw-bold mb-4">Login</h1>
-							<form method="POST" class="needs-validation" novalidate="" autocomplete="off">
+							<form th:action="@{/login}" th:method="POST" th:object="${loginRequest}">
 								<div class="mb-3">
-									<label class="mb-2 text-muted" for="email">E-Mail Address</label>
-									<input id="email" type="email" class="form-control" name="email" value="" required autofocus>
+									<label class="mb-2 text-muted" for="username">Username</label>
+									<input id="username" type="username" class="form-control" name="username" value="" required autofocus>
 									<div class="invalid-feedback">
-										Email is invalid
+										Username is invalid
 									</div>
 								</div>
 
@@ -43,7 +43,7 @@
 											Forgot Password?
 										</a>
 									</div>
-									<input id="password" type="password" class="form-control" name="password" required>
+									<input id="password" type="password" class="form-control" name="password" th:field="*{password}" required>
 								    <div class="invalid-feedback">
 								    	Password is required
 							    	</div>
@@ -62,7 +62,7 @@
 						</div>
 						<div class="card-footer py-3 border-0">
 							<div class="text-center">
-								Don't have an account? <a href="register.html" class="text-dark">Create One</a>
+								Don't have an account? <a th:href="@{/register}" class="text-dark">Create One</a>
 							</div>
 						</div>
 					</div>
@@ -74,6 +74,6 @@
 		</div>
 	</section>
 
-	<script src="js/login.js"></script>
+	<!-- <script src="js/login.js"></script> -->
 </body>
 </html>
