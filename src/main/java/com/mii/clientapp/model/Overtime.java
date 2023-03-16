@@ -1,5 +1,7 @@
 package com.mii.clientapp.model;
 
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 
 import lombok.*;
@@ -9,12 +11,12 @@ import lombok.*;
 @NoArgsConstructor
 public class Overtime {
     private Integer id;
-    private String startTime;
-    private String endTime;
-    private String applydate;
+    private LocalTime startTime;
+    private LocalTime endTime;
+    private LocalDateTime applydate;
     private String purpose;
     private String updateby;
-    private String respontime;
+    private LocalDateTime respontime;
     private Employee employee;
     private Status status;
     private Project project;

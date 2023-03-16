@@ -13,7 +13,6 @@ import lombok.*;
 public class OvertimeHistory {
     
     private Integer id;
-
     private LocalTime startTime;
     private LocalTime endTime;
     private LocalDateTime applydate;

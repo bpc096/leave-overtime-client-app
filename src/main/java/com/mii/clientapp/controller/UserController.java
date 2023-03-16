@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import com.mii.clientapp.model.User;
+import com.mii.clientapp.model.dto.UserRequest;
 import com.mii.clientapp.service.UserService;
 
 import lombok.AllArgsConstructor;
@@ -28,7 +29,7 @@ public class UserController {
     }
 
     @GetMapping("/create-form")
-    public String createForm(Model model, User users) {
+    public String createForm(Model model, UserRequest users) {
         model.addAttribute("status", "create");
         model.addAttribute("title", "Create Employee");
         return "layouts/user/form";

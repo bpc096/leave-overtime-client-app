@@ -42,10 +42,10 @@ public class LeaveController {
 
     @GetMapping("/update-form/{id}")
     public String updateForm(Model model, @PathVariable int id) {
-        model.addAttribute("user", leaveService.getById(id));
+        model.addAttribute("leave", leaveService.getById(id));
         model.addAttribute("status", "update");
         model.addAttribute("title", "Update Leave");
-        return "layouts/user/form";
+        return "layouts/leave/form";
     }
 
     @PutMapping("/{id}")

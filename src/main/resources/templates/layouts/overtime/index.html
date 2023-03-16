@@ -158,7 +158,7 @@
         <div class="d-flex" id="wrapper">
             <!-- Sidebar-->
             <div class="border-end bg-white" id="sidebar-wrapper">
-                <div class="sidebar-heading border-bottom bg-light">Start Bootstrap</div>
+                <div class="sidebar-heading border-bottom bg-light">Yuk Cuti Lembur</div>
                 <div class="list-group list-group-flush">
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" th:href="@{/home}">Dashboard</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" th:href="@{/user}">Manage Employees</a>
@@ -233,7 +233,7 @@
                                                 <th class="col-1">Applied by<i class="fa fa-sort"></i></th>
                                                 <th class="col-1">Status<i class="fa fa-sort"></i></th>
                                                 <th class="col-1">Project<i class="fa fa-sort"></i></th>
-                                                <th class="col-1">Action</th>
+                                                <th class="col-2">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -257,7 +257,8 @@
                                                 </td> -->
                                                 <td>
                                                     <a th:href="@{/overtime/{id} (id=${overtime.id})}" class="view" title="View" data-bs-toggle="modal" data-bs-target="#detailOvertime"><i class="material-icons">&#xE417;</i></a>
-                                                    <a href="#" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                                                    <a class="btn btn-success px-1" th:href="@{/overtime/update-form/{id} (id = ${overtime.id})}"> Accept </a>
+                                                    <a class="btn btn-danger px-1" th:href="@{/overtime/update-form/{id} (id = ${overtime.id})}"> Reject </a>
                                                     <!-- <form th:action="@{/overtime/{id} (id = ${overtime.id})}" th:method="DELETE"
                                                         onclick="return confirm('Are you sure want to delete this data???')">
                                                         <button class="btn btn-danger px-1" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i> </button>
