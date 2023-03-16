@@ -1,5 +1,6 @@
 package com.mii.clientapp.model;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
@@ -14,9 +15,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Leave {
     private Integer id;
-    private String startday;
-    private String endday;
-    private String applydate;
+    private LocalDate startday;
+    private LocalDate endday;
+    private LocalDateTime applydate;
     private String updateby;
     private String reason;
     private LocalDateTime respontime;

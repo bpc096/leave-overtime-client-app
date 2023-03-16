@@ -232,7 +232,7 @@
                                                 <th class="col-1">Response at<i class="fa fa-sort"></i></th>
                                                 <th class="col-1">Applied by<i class="fa fa-sort"></i></th>
                                                 <th class="col-1">Status<i class="fa fa-sort"></i></th>
-                                                <th class="col-1">Action</th>
+                                                <th class="col-2">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -255,7 +255,9 @@
                                                 </td> -->
                                                 <td>
                                                     <a th:href="@{/leave/{id} (id=${leave.employee.id})}" class="view" title="View" data-bs-toggle="modal" data-bs-target="#detailEmployee"><i class="material-icons">&#xE417;</i></a>
-                                                    <a href="#" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                                                    <a class="btn btn-success px-1" th:href="@{/leave/update-form/{id} (id = ${leave.id})}"> Accept </a>
+                                                    <a class="btn btn-danger px-1" th:href="@{/leave/update-form/{id} (id = ${leave.id})}"> Reject </a>
+                                                    <!-- <a href="#" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a> -->
                                                     <!-- <form th:action="@{/leave/{id} (id = ${leave.id})}" th:method="DELETE"
                                                         onclick="return confirm('Are you sure want to delete this data???')">
                                                         <button class="btn btn-danger px-1" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i> </button>

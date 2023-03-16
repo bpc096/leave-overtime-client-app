@@ -11,7 +11,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Status {
 
-
     private Integer id;
     private String name;
     // private List<Leave> leave;
