@@ -158,12 +158,11 @@
             <div class="border-end bg-white" id="sidebar-wrapper">
                 <div class="sidebar-heading border-bottom bg-light">Start Bootstrap</div>
                 <div class="list-group list-group-flush">
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Dashboard</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Manage Employee</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Manage Leave</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Apply Leave</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Manage Overtime</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Apply Overtime</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" th:href="@{/home}">Dashboard</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" th:href="@{/user}">Manage Employees</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" th:href="@{/leave}">Manage Leaves</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" th:href="@{/overtime}">Manage Overtimes</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" th:href="@{/project}">Manage Projects</a>
                 </div>
             </div>
             <!-- Page content wrapper-->
