@@ -244,7 +244,12 @@
                                                 <td th:text="${user.employee.address}"></td>
                                                 <td th:text="${user.employee.email}"></td>
                                                 <td th:text="${user.employee.phone}"></td>
-                                                <td th:text="${user.employee.idmanager}"></td>
+                                                <td th:if="${user.employee.manager != null}">
+                                                    <span th:text="${user.employee.manager.name}"></span>
+                                                </td>
+                                                <td th:if="${user.employee.manager == null}"></td>
+                                                <!-- <span th:unless="${user.employee.manager != null}" th:text="${user.employee.manager.name}"></span> -->
+                                                
                                                 <!-- <td class="d-flex gap-3">
                                                     <a class="btn btn-warning px-5"
                                                         th:href="@{/user/update-form/{id} (id = ${user.id})}"> Edit </a>
@@ -295,7 +300,7 @@
                                     <h4 id="employee-address" th:text="${emp.address}"></h4>
                                     <h4 id="employee-email" th:text="${emp.email}"></h4>
                                     <h4 id="employee-phone" th:text="${emp.phone}"></h4>
-                                    <h4 id="employee-manager" th:text="${emp.manager}"></h4> -->
+                                    <h4 id="employee-manager" th:text="${emp.manager.name}"></h4> -->
                                 </div>
                             </div>
                         </div>

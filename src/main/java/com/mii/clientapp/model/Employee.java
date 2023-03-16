@@ -11,7 +11,7 @@ import lombok.*;
 public class Employee {
     private Integer id;
     private String name;
-    private Integer idmanager;
+    private Employee manager;
     private String gender;
     private LocalDate birthdate;
     private String address;

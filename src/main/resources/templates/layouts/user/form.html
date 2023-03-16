@@ -209,7 +209,7 @@
                             <div class="d-flex justify-content-lg-start align-items-center pt-1 pb-2"></div>
                             <div class="container px-5 my-5">
                                 <form th:action="${status} == 'create' ? @{'/user'} : @{'/user/{id}' (id = ${user.employee.id})} "
-                                th:method="${status == 'create' ? 'POST' : 'PUT'}" th:object="${user}">
+                                th:method="${status == 'create' ? 'POST' : 'PUT'}" th:object="${userRequest}">
                                     <div class="mb-3">
                                         <label class="form-label" for="username">Username</label>
                                         <input class="form-control" id="username" type="text" placeholder="Username" data-sb-validations="required"  th:field="*{username}" />
@@ -222,28 +222,28 @@
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label" for="name">Name</label>
-                                        <input class="form-control" id="name" type="text" placeholder="Name" data-sb-validations="required"  th:field="*{employee.name}" />
+                                        <input class="form-control" id="name" type="text" placeholder="Name" data-sb-validations="required"  th:field="*{name}" />
                                         <div class="invalid-feedback" data-sb-feedback="name:required">Name is required.</div>
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label" for="email">Email</label>
-                                        <input class="form-control" id="email" type="email" placeholder="Email" data-sb-validations="required,email" th:field="*{employee.email}"/>
+                                        <input class="form-control" id="email" type="email" placeholder="Email" data-sb-validations="required,email" th:field="*{email}"/>
                                         <div class="invalid-feedback" data-sb-feedback="email:required">Email is required.</div>
                                         <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label" for="phoneNumber">Phone Number</label>
-                                        <input class="form-control" id="phoneNumber" type="text" placeholder="Phone Number" data-sb-validations="required" th:field="*{employee.phone}"/>
+                                        <input class="form-control" id="phoneNumber" type="text" placeholder="Phone Number" data-sb-validations="required" th:field="*{phone}"/>
                                         <div class="invalid-feedback" data-sb-feedback="phoneNumber:required">Phone Number is required.</div>
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label" for="address">Address</label>
-                                        <input class="form-control" id="address" type="text" placeholder="Address" data-sb-validations="required" th:field="*{employee.address}"/>
+                                        <input class="form-control" id="address" type="text" placeholder="Address" data-sb-validations="required" th:field="*{address}"/>
                                         <div class="invalid-feedback" data-sb-feedback="address:required">Address is required.</div>
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label" for="idmanager">Manager</label>
-                                        <input class="form-control" id="idmanager" type="text" placeholder="Manager" data-sb-validations="required" th:field="*{employee.idmanager}"/>
+                                        <input class="form-control" id="idmanager" type="text" placeholder="Manager" data-sb-validations="required" th:field="*{managerId}"/>
                                     </div>
                                     <div class="mb-3">
                                         <!-- <form class="row">
@@ -259,7 +259,7 @@
                                             </div>
                                         </form> -->
                                         <label class="form-label" for="birthdate">Birthdate</label>
-                                        <input class="form-control" id="birthdate" type="text" placeholder="Birthdate" data-sb-validations="required" th:field="*{employee.birthdate}"/>
+                                        <input class="form-control" id="birthdate" type="text" placeholder="Birthdate" data-sb-validations="required" th:field="*{birthdate}"/>
                                     </div>
                                     <div class="mb-3">
                                         <!-- <label class="form-label d-block">Gender</label>
@@ -274,7 +274,7 @@
                                         <div class="invalid-feedback" data-sb-feedback="gender:required">One option is required.</div> -->
                                         <div class="mb-3">
                                             <label class="form-label" for="gender">Gender</label>
-                                            <input class="form-control" id="gender" type="text" placeholder="Gender" data-sb-validations="required" th:field="*{employee.gender}"/>
+                                            <input class="form-control" id="gender" type="text" placeholder="Gender" data-sb-validations="required" th:field="*{gender}"/>
                                         </div>
                                     </div>
                                     <!-- <div class="d-none" id="submitSuccessMessage">

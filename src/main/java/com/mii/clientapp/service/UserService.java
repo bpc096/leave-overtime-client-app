@@ -31,7 +31,7 @@ public class UserService {
                 }).getBody();
     }
 
-    public User create(User user) {
+    public User create(UserRequest user) {
         return restTemplate.exchange("http://localhost:8088/api/user",
                 HttpMethod.POST,
                 new HttpEntity<>(user),
