@@ -26,29 +26,29 @@ public class EmployeeService {
     }
 
     public Employee getById(int id) {
-        return restTemplate.exchange("http://localhost:8088/api/overtime/" + id, HttpMethod.GET,
+        return restTemplate.exchange("http://localhost:8088/api/employee/" + id, HttpMethod.GET,
         null,
         new ParameterizedTypeReference<Employee>() {
         }).getBody();
     }
 
     public Employee create(Employee employee){
-        return restTemplate.exchange("http://localhost:8088/api/overtime", HttpMethod.POST,
-        new HttpEntity(employee),
+        return restTemplate.exchange("http://localhost:8088/api/employee", HttpMethod.POST,
+        new HttpEntity<>(employee),
         new ParameterizedTypeReference<Employee>(){  
         }).getBody();
     }
 
     public Employee update(int id, Employee employee) {
-        return restTemplate.exchange("http://localhost:8088/api/overtime/" + id,
+        return restTemplate.exchange("http://localhost:8088/api/employee/" + id,
         HttpMethod.PUT,
-        new HttpEntity(employee),
+        new HttpEntity<>(employee),
         new ParameterizedTypeReference<Employee>(){
         }).getBody();
     }
 
     public Employee delete(int id){
-        return restTemplate.exchange("http://localhost:8088/api/overtime/" + id,
+        return restTemplate.exchange("http://localhost:8088/api/employee/" + id,
         HttpMethod.DELETE,
         null,
         new ParameterizedTypeReference<Employee>(){
