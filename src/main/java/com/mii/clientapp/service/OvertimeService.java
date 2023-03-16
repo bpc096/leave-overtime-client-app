@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.mii.clientapp.model.Overtime;
+import com.mii.clientapp.model.dto.OvertimeRequest;
 
 import lombok.AllArgsConstructor;
 
@@ -31,7 +32,7 @@ public class OvertimeService {
                 }).getBody();
     }
 
-    public Overtime create(Overtime overtime) {
+    public Overtime create(OvertimeRequest overtime) {
         return restTemplate.exchange("http://localhost:8088/api/overtime", HttpMethod.POST,
                 new HttpEntity<>(overtime),
                 new ParameterizedTypeReference<Overtime>() {

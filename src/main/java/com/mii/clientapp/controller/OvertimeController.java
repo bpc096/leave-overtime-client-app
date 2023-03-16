@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import com.mii.clientapp.model.Overtime;
+import com.mii.clientapp.model.dto.OvertimeRequest;
 import com.mii.clientapp.service.OvertimeService;
 
 import lombok.AllArgsConstructor;
@@ -29,14 +30,14 @@ public class OvertimeController {
     }
 
     @GetMapping("/create-form")
-    public String createForm(Model model, Overtime overtimes) {
+    public String createForm(Model model, OvertimeRequest overtimes) {
         model.addAttribute("status", "create");
         model.addAttribute("title", "Create overtime");
         return "layouts/overtime/form";
     }
 
     @PostMapping
-    public String create(Overtime overtime) {
+    public String create(OvertimeRequest overtime) {
         overtimeService.create(overtime);
         return "redirect:/overtime";
     }
