@@ -1,116 +1,335 @@
 <!DOCTYPE html>
-<html lang='en'>
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Bootstrap Core CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-    <link rel="stylesheet" href="css/style.css">
-
-    <!--  DataTables CSS CDN  -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.css">
-
-    <title>Leave Overtime Management System</title>
-
-    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.4/index.global.min.js'></script>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Manage Overtimes</title>
+        <!-- Favicon-->
+        <!-- <link rel="icon" type="image/x-icon" href="assets/favicon.ico" /> -->
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <!-- <link href="css/styles.css" rel="stylesheet" /> -->
+        <!-- Bootstrap Core CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="../vendor/css/style.css">
+        <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.4/index.global.min.js'></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"> </script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"> </script>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.25/datatables.min.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous" />
+        <style>
+            body {
+                color: #566787;
+                background: #f5f5f5;
+		        font-family: 'Roboto', sans-serif;
+	        }
+            .table-responsive {
+                margin: 30px 0;
+            }
+	        .table-wrapper {
+		        min-width: 1000px;
+                background: #fff;
+                padding: 20px;        
+                box-shadow: 0 1px 1px rgba(0,0,0,.05);
+            }
+	        .table-title {
+                padding-bottom: 10px;
+                margin: 0 0 10px;
+            }
+            .table-title h2 {
+                margin: 8px 0 0;
+                font-size: 22px;
+            }
+            .search-box {
+                position: relative;        
+                float: right;
+            }
+            .search-box input {
+                height: 34px;
+                border-radius: 20px;
+                padding-left: 35px;
+                border-color: #ddd;
+                box-shadow: none;
+            }
+	        .search-box input:focus {
+		        border-color: #3FBAE4;
+	        }
+            .search-box i {
+                color: #a0a5b1;
+                position: absolute;
+                font-size: 19px;
+                top: 8px;
+                left: 10px;
+            }
+            table.table tr th, table.table tr td {
+                border-color: #e9e9e9;
+            }
+            table.table-striped tbody tr:nth-of-type(odd) {
+    	        background-color: #fcfcfc;
+	        }
+	        table.table-striped.table-hover tbody tr:hover {
+		        background: #f5f5f5;
+	        }
+            table.table th i {
+                font-size: 13px;
+                margin: 0 5px;
+                cursor: pointer;
+            }
+            table.table td:last-child {
+                width: 130px;
+            }
+            table.table td a {
+                color: #a0a5b1;
+                display: inline-block;
+                margin: 0 5px;
+            }
+	        table.table td a.view {
+                color: #03A9F4;
+            }
+            table.table td a.edit {
+                color: #FFC107;
+            }
+            table.table td a.delete {
+                color: #E34724;
+            }
+            table.table td i {
+                font-size: 19px;
+            }    
+            .pagination {
+                float: right;
+                margin: 0 0 5px;
+            }
+            .pagination li a {
+                border: none;
+                font-size: 95%;
+                width: 30px;
+                height: 30px;
+                color: #999;
+                margin: 0 2px;
+                line-height: 30px;
+                border-radius: 30px !important;
+                text-align: center;
+                padding: 0;
+            }
+            .pagination li a:hover {
+                color: #666;
+            }	
+            .pagination li.active a {
+                background: #03A9F4;
+            }
+            .pagination li.active a:hover {        
+                background: #0397d6;
+            }
+	        .pagination li.disabled i {
+                color: #ccc;
+            }
+            .pagination li i {
+                font-size: 16px;
+                padding-top: 6px
+            }
+            .hint-text {
+                float: left;
+                margin-top: 6px;
+                font-size: 95%;
+            }    
+    </style>
     <script>
-
-      document.addEventListener('DOMContentLoaded', function() {
-        var calendarEl = document.getElementById('calendar');
-        var calendar = new FullCalendar.Calendar(calendarEl, {
-          initialView: 'dayGridMonth'
+        $(document).ready(function(){
+	        $('[data-toggle="tooltip"]').tooltip()});
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth'
         });
-        calendar.render();
-      });
+            calendar.render();
+        });
 
-    </script>
-  </head>
-  <body>
-    <div class="d-flex" id="wrapper">
-
-      <!-- Sidebar -->
-      <div class="bg-light border-right" id="sidebar-wrapper">
-        <div class="sidebar-heading"> Yuk Cuti </div>
-        <div class="list-group list-group-flush">
-          <a href="#" class="list-group-item list-group-item-action bg-light">Home</a>
-          <a href="#" class="list-group-item list-group-item-action bg-light">Manage Employee</a>
-          <a href="#" class="list-group-item list-group-item-action bg-light">Manage Leave</a>
-          <a href="#" class="list-group-item list-group-item-action bg-light">Apply Leave</a>
-          <a href="#" class="list-group-item list-group-item-action bg-light">Manage Overtime</a>
-          <a href="#" class="list-group-item list-group-item-action bg-light">Apply Overtime</a>
-          <a href="#" class="list-group-item list-group-item-action bg-light">My Leaves</a>
-          <a href="#" class="list-group-item list-group-item-action bg-light">My Overtime</a>
+        </script>
+    </head>
+    <body>
+        <div class="d-flex" id="wrapper">
+            <!-- Sidebar-->
+            <div class="border-end bg-white" id="sidebar-wrapper">
+                <div class="sidebar-heading border-bottom bg-light">Yuk Cuti Lembur</div>
+                <div class="list-group list-group-flush">
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" th:href="@{/home}">Dashboard</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" th:href="@{/user}">Manage Employees</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" th:href="@{/leave}">Manage Leaves</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" th:href="@{/overtime}">Manage Overtimes</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" th:href="@{/project}">Manage Projects</a>
+                </div>
+            </div>
+            <!-- Page content wrapper-->
+            <div id="page-content-wrapper">
+                <!-- Top navigation-->
+                <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+                    <div class="container-fluid">
+                        <button class="btn btn-primary" id="sidebarToggle">Toggle Menu</button>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                        <form class="d-flex" role="search">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success" type="submit">Search</button>
+                        </form>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+                                <li class="nav-item active"><a class="nav-link" href="#!">Home</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#!">Link</a></li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="#!">My Leave</a>
+                                        <a class="dropdown-item" href="#!">My Overtime</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#!">Logout</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <!-- Page content-->
+                <div class="container-fluid">
+                    <h3 class="mt-4"> Manage Overtimes </h3>
+                    <p>The starting state of the menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will change.</p>
+                    <p>
+                        Make sure to keep all page content within the
+                        <code>#page-content-wrapper</code>
+                        . The top navbar is optional, and just for demonstration. Just create an element with the
+                        <code>#sidebarToggle</code>
+                        ID which will toggle the menu when clicked.
+                    </p>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-lg-start align-items-center pt-1 pb-2"></div>
+                            <div class="table-responsive">
+                                <div class="table-wrapper">
+                                    <div class="table-title">
+                                        <div class="row">
+                                            <div class="col-sm-8"><h2>Overtime <b>Details</b></h2></div>
+                                            <div class="col-sm-4">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <a class="btn btn-success" th:href="@{/overtime/create-form}">Add Overtime</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <table class="table table-striped table-hover table-bordered" id="OvertimeTable">
+                                        <thead>
+                                            <tr>
+                                                <th class="col-1">Start Time <i class="fa fa-sort"></i></th>
+                                                <th class="col-1">End Time<i class="fa fa-sort"></i></th>
+                                                <th class="col-1">Apply Date<i class="fa fa-sort"></i></th>
+                                                <th class="col-1">Purpose<i class="fa fa-sort"></i></th>
+                                                <th class="col-1">Updated By<i class="fa fa-sort"></i></th>
+                                                <th class="col-1">Response at<i class="fa fa-sort"></i></th>
+                                                <th class="col-1">Applied by<i class="fa fa-sort"></i></th>
+                                                <th class="col-1">Status<i class="fa fa-sort"></i></th>
+                                                <th class="col-1">Project<i class="fa fa-sort"></i></th>
+                                                <th class="col-2">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr th:each="overtime : ${overtimes}">
+                                                <td th:text="${overtime.startTime}"></td>
+                                                <td th:text="${overtime.endTime}"></td>
+                                                <td th:text="${overtime.applydate}"></td>
+                                                <td th:text="${overtime.purpose}"></td>
+                                                <td th:text="${overtime.updateby}"></td>
+                                                <td th:text="${overtime.respontime}"></td>
+                                                <td th:text="${overtime.employee.name}"></td>
+                                                <td th:text="${overtime.status.name}"></td>
+                                                <td th:text="${overtime.project.name}"></td>
+                                                <!-- <td class="d-flex gap-3">
+                                                    <a class="btn btn-warning px-5"
+                                                        th:href="@{/user/update-form/{id} (id = ${user.id})}"> Edit </a>
+                                                    <form th:action="@{/user/{id} (id = ${user.id})}" th:method="DELETE"
+                                                        onclick="return confirm('Are you sure want to delete this data???')">
+                                                        <button class="btn btn-danger px-5"> Delete </button>
+                                                    </form>
+                                                </td> -->
+                                                <td>
+                                                    <a th:href="@{/overtime/{id} (id=${overtime.id})}" class="view" title="View" data-bs-toggle="modal" data-bs-target="#detailOvertime"><i class="material-icons">&#xE417;</i></a>
+                                                    <a class="btn btn-success px-1" th:href="@{/overtime/update-form/{id} (id = ${overtime.id})}"> Accept </a>
+                                                    <a class="btn btn-danger px-1" th:href="@{/overtime/update-form/{id} (id = ${overtime.id})}"> Reject </a>
+                                                    <!-- <form th:action="@{/overtime/{id} (id = ${overtime.id})}" th:method="DELETE"
+                                                        onclick="return confirm('Are you sure want to delete this data???')">
+                                                        <button class="btn btn-danger px-1" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i> </button>
+                                                    </form> -->
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>        
+                        </div>   
+                    </div>
+                </div>
+                <!-- Modal Detail Employee -->
+                <div class="modal fade" id="detailOvertime" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Detail Employee</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="d-flex align-items-center gap-4">
+                                    <div>
+                                        <h4>Name</h4>
+                                        <h4>Gender</h4>
+                                        <h4>DOB</h4>
+                                        <h4>Address</h4>
+                                        <h4>Email</h4>
+                                        <h4>Phone</h4>
+                                        <h4>Manager</h4>
+                                    </div>
+                                <div>
+                                    <!-- <h4 id="employee-name" th:text="${emp.name}"></h4>
+                                    <h4 id="employee-gender" th:text="${emp.gender}"></h4>
+                                    <h4 id="employee-birthdate" th:text="${emp.birthdate}"></h4>
+                                    <h4 id="employee-address" th:text="${emp.address}"></h4>
+                                    <h4 id="employee-email" th:text="${emp.email}"></h4>
+                                    <h4 id="employee-phone" th:text="${emp.phone}"></h4>
+                                    <h4 id="employee-manager" th:text="${emp.manager}"></h4> -->
+                                </div>
+                            </div>
+                        </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> Close </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <!-- /#sidebar-wrapper -->
-  
-      <!-- Page Content -->
-      <div id="page-content-wrapper">
-  
-        <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-          <button class="btn btn-primary" id="menu-toggle">Menu</button>
-  
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-  
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-              <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only"> </span></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-              </li>
-              <li class="dropdown">
-                <a class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Profile
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li><a class="dropdown-item" href="#">Logout</a></li>
-                </ul>
-              </li>
-            </ul>
-            <form class="d-flex" role="search">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-          </div>
-        </nav>
-  
-        <div class="container-fluid">
-          <!-- <h1 class="mt-4">Simple Sidebar</h1>
-          <p>The starting state of the menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will change.</p>
-          <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>. The top navbar is optional, and just for demonstration. Just create an element with the <code>#menu-toggle</code> ID which will toggle the menu when clicked.</p> -->
-          
-        </div>
-      </div>
-      <!-- /#page-content-wrapper -->
-  
-    </div>
-    <!-- /#wrapper -->
-  
-    <!-- Bootstrap core JavaScript -->
-    <!-- jquery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-
-    <!-- bootstrap -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-        crossorigin="anonymous"></script>
-  
-    <!-- Menu Toggle Script -->
-    <script>
-      $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-      });
-    </script>
-  
-  </body>
+        <!-- jquery -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="../vendor/js/script.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.25/datatables.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $("#OvertimeTable").DataTable({
+                    
+                });
+            })
+        </script>
+        <script>
+            $("#sidebarToggle").click(function(e) {
+                e.preventDefault();
+                $("#wrapper").toggleClass("toggled");
+            });
+        </script>
+        <script th:src="@{/js/user.js}"></script>
+    </body>
 </html>

@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Simple Sidebar - Start Bootstrap Template</title>
+        <title>Manage Leaves</title>
         <!-- Favicon-->
         <!-- <link rel="icon" type="image/x-icon" href="assets/favicon.ico" /> -->
         <!-- Core theme CSS (includes Bootstrap)-->
@@ -20,6 +20,9 @@
         <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.4/index.global.min.js'></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"> </script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"> </script>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.25/datatables.min.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous" />
         <style>
             body {
                 color: #566787;
@@ -157,12 +160,11 @@
             <div class="border-end bg-white" id="sidebar-wrapper">
                 <div class="sidebar-heading border-bottom bg-light">Start Bootstrap</div>
                 <div class="list-group list-group-flush">
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Dashboard</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Manage Employee</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Manage Leave</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Apply Leave</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Manage Overtime</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Apply Overtime</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" th:href="@{/home}">Dashboard</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" th:href="@{/user}">Manage Employees</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" th:href="@{/leave}">Manage Leaves</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" th:href="@{/overtime}">Manage Overtimes</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" th:href="@{/project}">Manage Projects</a>
                 </div>
             </div>
             <!-- Page content wrapper-->
@@ -181,7 +183,7 @@
                                 <li class="nav-item active"><a class="nav-link" href="#!">Home</a></li>
                                 <li class="nav-item"><a class="nav-link" href="#!">Link</a></li>
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Profile</a>
                                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="#!">My Leave</a>
                                         <a class="dropdown-item" href="#!">My Overtime</a>
@@ -195,7 +197,7 @@
                 </nav>
                 <!-- Page content-->
                 <div class="container-fluid">
-                    <h3 class="mt-4"> Manage Employees </h3>
+                    <h3 class="mt-4"> Manage Leaves </h3>
                     <p>The starting state of the menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will change.</p>
                     <p>
                         Make sure to keep all page content within the
@@ -213,17 +215,13 @@
                                         <div class="row">
                                             <div class="col-sm-8"><h2>Leave <b>Details</b></h2></div>
                                             <div class="col-sm-4">
-                                                <div class="search-box">
-                                                    <i class="material-icons">&#xE8B6;</i>
-                                                    <input type="text" class="form-control" placeholder="Search&hellip;">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <a class="btn btn-success" th:href="@{/leave/create-form}">Add Leave</a>
                                                 </div>
-                                                <!-- <div class="d-flex justify-content-between align-items-center">
-                                                    <a class="btn btn-success" th:href="@{/leave/create-form}">Add Employee</a>
-                                                </div> -->
                                             </div>
                                         </div>
                                     </div>
-                                    <table class="table table-striped table-hover table-bordered">
+                                    <table class="table table-striped table-hover table-bordered" id="LeaveTable">
                                         <thead>
                                             <tr>
                                                 <th class="col-1">Start Date <i class="fa fa-sort"></i></th>
@@ -234,7 +232,7 @@
                                                 <th class="col-1">Response at<i class="fa fa-sort"></i></th>
                                                 <th class="col-1">Applied by<i class="fa fa-sort"></i></th>
                                                 <th class="col-1">Status<i class="fa fa-sort"></i></th>
-                                                <th class="col-1">Action</th>
+                                                <th class="col-2">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -256,28 +254,18 @@
                                                     </form>
                                                 </td> -->
                                                 <td>
-                                                    <a th:href="@{/user/{id} (id=${user.employee.id})}" class="view" title="View" data-bs-toggle="modal" data-bs-target="#detailEmployee"><i class="material-icons">&#xE417;</i></a>
-                                                    <a href="#" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                                                    <!-- <form th:action="@{/user/{id} (id = ${user.id})}" th:method="DELETE"
+                                                    <a th:href="@{/leave/{id} (id=${leave.employee.id})}" class="view" title="View" data-bs-toggle="modal" data-bs-target="#detailEmployee"><i class="material-icons">&#xE417;</i></a>
+                                                    <a class="btn btn-success px-1" th:href="@{/leave/update-form/{id} (id = ${leave.id})}"> Accept </a>
+                                                    <a class="btn btn-danger px-1" th:href="@{/leave/update-form/{id} (id = ${leave.id})}"> Reject </a>
+                                                    <!-- <a href="#" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a> -->
+                                                    <!-- <form th:action="@{/leave/{id} (id = ${leave.id})}" th:method="DELETE"
                                                         onclick="return confirm('Are you sure want to delete this data???')">
-                                                        <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                                                        <button class="btn btn-danger px-1" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i> </button>
                                                     </form> -->
                                                 </td>
                                             </tr>
                                         </tbody>
                                     </table>
-                                    <div class="clearfix">
-                                        <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
-                                        <ul class="pagination">
-                                            <li class="page-item disabled"><a href="#"><i class="fa fa-angle-double-left"></i></a></li>
-                                            <li class="page-item"><a href="#" class="page-link">1</a></li>
-                                            <li class="page-item"><a href="#" class="page-link">2</a></li>
-                                            <li class="page-item active"><a href="#" class="page-link">3</a></li>
-                                            <li class="page-item"><a href="#" class="page-link">4</a></li>
-                                            <li class="page-item"><a href="#" class="page-link">5</a></li>
-                                            <li class="page-item"><a href="#" class="page-link"><i class="fa fa-angle-double-right"></i></a></li>
-                                        </ul>
-                                    </div>
                                 </div>
                             </div>        
                         </div>   
@@ -288,7 +276,7 @@
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">Detail Employee</h1>
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Detail Leave</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
@@ -327,6 +315,14 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="../vendor/js/script.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.25/datatables.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $("#LeaveTable").DataTable({
+                    
+                });
+            })
+        </script>
         <script>
             $("#sidebarToggle").click(function(e) {
                 e.preventDefault();

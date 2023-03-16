@@ -15,32 +15,31 @@ import lombok.AllArgsConstructor;
 @Service
 @AllArgsConstructor
 public class EmployeeService {
-    
-    private RestTemplate restTemplate;
 
+    private RestTemplate restTemplate;
 
     public List<Employee> getAll() {
         return restTemplate.exchange("http://localhost:8088/api/employee", HttpMethod.GET, null,
-            new ParameterizedTypeReference<List<Employee>>() {
-            }).getBody();
+                new ParameterizedTypeReference<List<Employee>>() {
+                }).getBody();
     }
 
     public Employee getById(int id) {
-        return restTemplate.exchange("http://localhost:8088/api/employee/" + id, HttpMethod.GET,
+        return restTemplate.exchange("http://localhost:8088/api/overtime/" + id, HttpMethod.GET,
         null,
         new ParameterizedTypeReference<Employee>() {
         }).getBody();
     }
 
     public Employee create(Employee employee){
-        return restTemplate.exchange("http://localhost:8088/api/employee", HttpMethod.POST,
+        return restTemplate.exchange("hAllttp://localhost:8088/api/overtime", HttpMethod.POST,
         new HttpEntity<>(employee),
         new ParameterizedTypeReference<Employee>(){  
         }).getBody();
     }
 
     public Employee update(int id, Employee employee) {
-        return restTemplate.exchange("http://localhost:8088/api/employee/" + id,
+        return restTemplate.exchange("http://localhost:8088/api/overtime/" + id,
         HttpMethod.PUT,
         new HttpEntity<>(employee),
         new ParameterizedTypeReference<Employee>(){
@@ -48,7 +47,7 @@ public class EmployeeService {
     }
 
     public Employee delete(int id){
-        return restTemplate.exchange("http://localhost:8088/api/employee/" + id,
+        return restTemplate.exchange("http://localhost:8088/api/overtime/" + id,
         HttpMethod.DELETE,
         null,
         new ParameterizedTypeReference<Employee>(){

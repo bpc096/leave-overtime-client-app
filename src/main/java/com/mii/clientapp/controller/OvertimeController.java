@@ -1,5 +1,64 @@
 package com.mii.clientapp.controller;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
+import com.mii.clientapp.model.Overtime;
+import com.mii.clientapp.service.OvertimeService;
+
+import lombok.AllArgsConstructor;
+
+@Controller
+@RequestMapping("/overtime")
+@AllArgsConstructor
 public class OvertimeController {
-    
+
+    private OvertimeService overtimeService;
+
+    @GetMapping
+    public String getAll(Model model) {
+        model.addAttribute("overtimes", overtimeService.getAll());
+        return "layouts/overtime/index";
+    }
+
+    @GetMapping("/{id}")
+    public String getById(Model model, @PathVariable int id) {
+        model.addAttribute("overtime", overtimeService.getById(id));
+        return "layouts/overtime/index";
+    }
+
+    @GetMapping("/create-form")
+    public String createForm(Model model, Overtime overtimes) {
+        model.addAttribute("status", "create");
+        model.addAttribute("title", "Create overtime");
+        return "layouts/overtime/form";
+    }
+
+    @PostMapping
+    public String create(Overtime overtime) {
+        overtimeService.create(overtime);
+        return "redirect:/overtime";
+    }
+
+    @GetMapping("/update-form/{id}")
+    public String updateForm(Model model, @PathVariable int id) {
+        model.addAttribute("user", overtimeService.getById(id));
+        model.addAttribute("status", "update");
+        model.addAttribute("project", "update");
+        model.addAttribute("title", "Update overtime");
+        return "layouts/user/form";
+    }
+
+    @PutMapping("/{id}")
+    public String update(@PathVariable int id, Overtime overtime) {
+        overtimeService.update(id, overtime);
+        return "redirect:/overtime";
+    }
+
+    @DeleteMapping("/{id}")
+    public String delete(@PathVariable int id) {
+        overtimeService.delete(id);
+        return "redirect:/overtime";
+    }
 }

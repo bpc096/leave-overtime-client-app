@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.mii.clientapp.model.User;
+import com.mii.clientapp.model.dto.UserRequest;
 
 import lombok.AllArgsConstructor;
 
@@ -30,10 +31,10 @@ public class UserService {
                 }).getBody();
     }
 
-    public User create(User user) {
+    public User create(UserRequest user) {
         return restTemplate.exchange("http://localhost:8088/api/user",
                 HttpMethod.POST,
-                new HttpEntity(user),
+                new HttpEntity<>(user),
                 new ParameterizedTypeReference<User>() {
                 }).getBody();
     }
@@ -41,7 +42,7 @@ public class UserService {
     public User update(int id, User user) {
         return restTemplate.exchange("http://localhost:8088/api/user/" + id,
                 HttpMethod.PUT,
-                new HttpEntity(user),
+                new HttpEntity<>(user),
                 new ParameterizedTypeReference<User>() {
                 }).getBody();
     }

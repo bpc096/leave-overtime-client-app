@@ -33,7 +33,7 @@ public class LeaveService {
     public Leave create(Leave leave) {
         return restTemplate.exchange("http://localhost:8088/api/leave",
                 HttpMethod.POST,
-                new HttpEntity(leave),
+                new HttpEntity<>(leave),
                 new ParameterizedTypeReference<Leave>() {
                 }).getBody();
     }
@@ -41,7 +41,7 @@ public class LeaveService {
     public Leave update(int id, Leave leave) {
         return restTemplate.exchange("http://localhost:8088/api/leave/" + id,
                 HttpMethod.PUT,
-                new HttpEntity(leave),
+                new HttpEntity<>(leave),
                 new ParameterizedTypeReference<Leave>() {
                 }).getBody();
     }
@@ -53,7 +53,5 @@ public class LeaveService {
                 new ParameterizedTypeReference<Leave>() {
                 }).getBody();
     }
-
-
 
 }

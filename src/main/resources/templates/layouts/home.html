@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Simple Sidebar - Start Bootstrap Template</title>
+        <title>Yuk Cuti Lembur</title>
         <!-- Favicon-->
         <!-- <link rel="icon" type="image/x-icon" href="assets/favicon.ico" /> -->
         <!-- Core theme CSS (includes Bootstrap)-->
@@ -16,7 +16,6 @@
         <link rel="stylesheet" href="../vendor/css/style.css">
         <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.4/index.global.min.js'></script>
         <script>
-
         document.addEventListener('DOMContentLoaded', function() {
             var calendarEl = document.getElementById('calendar');
             var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -31,14 +30,13 @@
         <div class="d-flex" id="wrapper">
             <!-- Sidebar-->
             <div class="border-end bg-white" id="sidebar-wrapper">
-                <div class="sidebar-heading border-bottom bg-light">Start Bootstrap</div>
+                <div class="sidebar-heading border-bottom bg-light">Yuk Cuti Lembur</div>
                 <div class="list-group list-group-flush">
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Dashboard</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Manage Employee</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Manage Leave</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Apply Leave</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Manage Overtime</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Apply Overtime</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" th:href="@{/home}">Dashboard</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" th:href="@{/user}">Manage Employees</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" th:href="@{/leave}">Manage Leaves</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" th:href="@{/overtime}">Manage Overtimes</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" th:href="@{/project}">Manage Projects</a>
                 </div>
             </div>
             <!-- Page content wrapper-->
@@ -57,7 +55,7 @@
                                 <li class="nav-item active"><a class="nav-link" href="#!">Home</a></li>
                                 <li class="nav-item"><a class="nav-link" href="#!">Link</a></li>
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Profile</a>
                                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="#!">My Leave</a>
                                         <a class="dropdown-item" href="#!">My Overtime</a>
@@ -71,7 +69,6 @@
                 </nav>
                 <!-- Page content-->
                 <div class="container-fluid">
-                    <!-- <h1 class="mt-4">Simple Sidebar</h1>
                     <p>The starting state of the menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will change.</p>
                     <p>
                         Make sure to keep all page content within the
@@ -79,8 +76,8 @@
                         . The top navbar is optional, and just for demonstration. Just create an element with the
                         <code>#sidebarToggle</code>
                         ID which will toggle the menu when clicked.
-                    </p> -->
-                    <div id="calendar"></div>
+                    </p>
+                    <!-- <div id="calendar"></div> -->
                 </div>
             </div>
         </div>
