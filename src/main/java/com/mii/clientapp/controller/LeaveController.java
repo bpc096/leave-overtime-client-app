@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import com.mii.clientapp.model.Leave;
+import com.mii.clientapp.model.dto.LeaveRequest;
 import com.mii.clientapp.service.LeaveService;
 
 import lombok.AllArgsConstructor;
