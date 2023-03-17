@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.mii.clientapp.model.Overtime;
+import com.mii.clientapp.model.dto.OvertimeRequest;
 
 import lombok.AllArgsConstructor;
 

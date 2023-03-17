@@ -24,6 +24,8 @@ public class ProjectController {
     @GetMapping
     public String getAll(Model model) {
         model.addAttribute("projects", projectService.getAll());
+        List<Employee> emp = employeeService.getAll();
+        model.addAttribute("listEmployees", emp);
         return "layouts/project/index";
     }
 
@@ -66,5 +68,12 @@ public class ProjectController {
     public String addEmployee(@PathVariable Integer id, Employee employee) {
         projectService.addEmployee(id, employee);
         return "redirect:/project";
+    }
+
+    @GetMapping("/create-formemp")
+    public String createFormemp(Model model, Project project) {
+        List<Employee> lemp = employeeService.getAll();
+        model.addAttribute("listEmployees", lemp);
+        return "layouts/project/formemp";
     }
 }

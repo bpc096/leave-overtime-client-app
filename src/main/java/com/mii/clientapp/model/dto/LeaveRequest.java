@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 import lombok.Data;
 
 @Data
-public class LeaveRequset {
+public class LeaveRequest {
     private LocalDate startday;
     private LocalDate endday;
     private LocalDateTime applydate;

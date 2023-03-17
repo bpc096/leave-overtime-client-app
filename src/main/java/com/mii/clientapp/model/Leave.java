@@ -6,6 +6,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,12 +16,17 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Leave {
+    
     private Integer id;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate startday;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate endday;
+    // @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private LocalDateTime applydate;
     private String updateby;
     private String reason;
+    // @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private LocalDateTime respontime;
     private Employee employee;
     private Status status;
