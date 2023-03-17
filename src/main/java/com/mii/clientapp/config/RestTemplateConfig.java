@@ -13,17 +13,16 @@ import com.mii.clientapp.util.RequestInterceptor;
 @Configuration
 public class RestTemplateConfig {
 
-    // @Bean 
+    // @Bean
     // public RestTemplate restTemplate(){
-    //     return new RestTemplate();
+    // return new RestTemplate();
     // }
 
     @Bean
     public RestTemplate restTemplate() {
         RestTemplate restTemplate = new RestTemplate();
 
-        List<ClientHttpRequestInterceptor> interceptors =
-        restTemplate.getInterceptors();
+        List<ClientHttpRequestInterceptor> interceptors = restTemplate.getInterceptors();
 
         if (CollectionUtils.isEmpty(interceptors)) {
             interceptors = new ArrayList<>();
