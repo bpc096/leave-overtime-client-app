@@ -32,14 +32,14 @@ public class OvertimeService {
                 }).getBody();
     }
 
-    public Overtime create(Overtime overtime) {
+    public Overtime create(OvertimeRequest overtime) {
         return restTemplate.exchange("http://localhost:8088/api/overtime", HttpMethod.POST,
                 new HttpEntity<>(overtime),
                 new ParameterizedTypeReference<Overtime>() {
                 }).getBody();
     }
 
-    public Overtime update(int id, Overtime overtime) {
+    public Overtime update(int id, OvertimeRequest overtime) {
         return restTemplate.exchange("http://localhost:8088/api/overtime/" + id,
                 HttpMethod.PUT,
                 new HttpEntity<>(overtime),

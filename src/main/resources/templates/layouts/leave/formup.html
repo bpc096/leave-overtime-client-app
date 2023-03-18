@@ -197,7 +197,7 @@
                 </nav>
                 <!-- Page content-->
                 <div class="container-fluid">
-                    <h3 class="mt-4"> Project Form </h3>
+                    <h3 class="mt-4"> Leave Form </h3>
                     <p>The starting state of the menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will change.</p>
                     <p>
                         Make sure to keep all page content within the
@@ -210,17 +210,38 @@
                         <div class="card-body">
                             <div class="d-flex justify-content-lg-start align-items-center pt-1 pb-2"></div>
                             <div class="container px-5 my-5">
-                                <form th:action="@{/project/{id}} "
-                                    th:method="POST" th:object="${project}">
-                                    <div class="form-floating mb-3">
-                                        <select class="form-select" id="employeeName" aria-label="Employee Name">
-                                            <option value="select">Select Employee Name</option>
-                                            <th:block th:each="lemp : ${listEmployees}">
-                                                <option th:text="${lemp.name}" th:value="${lemp.id}"></option>
-                                            </th:block>
-                                        </select>
-                                        <label for="employeeName">Employee Name</label>
+                                <form th:action=" @{/leave/{id} (id = ${leave.id})} "
+                                    th:method="PUT" th:object="${leave}">
+                                    <!-- <div class="mb-3">
+                                        <label class="form-label" for="startday">Start Date</label>
+                                        <input class="form-control" id="startday" type="hidden" placeholder="Start Date" data-sb-validations="required"  th:field="*{startday}" />
+                                        <div class="invalid-feedback" data-sb-feedback="startday:required">Start Date is required.</div>
+                                    </div> -->
+                                    <!-- <div class="mb-3">
+                                        <label  class="form-label" for="endday">End Date</label>
+                                        <input class="form-control" id="endday" type="hidden" placeholder="End Date" data-sb-validations="required"  th:field="*{endday}" re />
+                                        <div class="invalid-feedback" data-sb-feedback="enddate:required">End Date is required.</div>
+                                    </div> -->
+                                    <!-- <div class="mb-3">
+                                        <label  class="form-label" for="updateby">Update By</label>
+                                        <input class="form-control" id="updateby" type="text" placeholder="Update By" data-sb-validations="required"  th:field="*{updateby}" />
+                                    </div> -->
+                                    <!-- th:if="${status} =! 'create'" -->
+                                    <div class="mb-3" >
+                                        <!-- <label  class="form-label" for="status">Status</label> -->
+                                        <input class="form-control" id="status" type="hidden" placeholder="Status" th:field="*{status.id}"/>
                                     </div>
+                                    <!-- <div class="mb-3">
+                                        <label class="form-label" for="reason">Reason</label>
+                                        <input class="form-control" id="reason" type="hidden" placeholder="Reason" data-sb-validations="required"  th:field="*{reason}" />
+                                        <div class="invalid-feedback" data-sb-feedback="reason:required">Reason is required.</div>
+                                    </div> -->
+                                    <!-- <div class="mb-3">
+                                        <label class="form-label" for="employeeid">Employee</label>
+                                        <input class="form-control" id="employeeid" type="text" placeholder="Employee Id" data-sb-validations="required"  th:field="*{employee.name}" 
+                                        />
+                                        <div class="invalid-feedback" data-sb-feedback="employeeid:required">Employee is required.</div>
+                                    </div> -->
                                     <div class="d-grid">
                                         <button class="btn btn-primary btn-lg" id="submitButton" type="submit">Submit</button>
                                     </div>

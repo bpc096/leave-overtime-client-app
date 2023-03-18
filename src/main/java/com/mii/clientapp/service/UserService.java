@@ -55,4 +55,12 @@ public class UserService {
                 }).getBody();
     }
 
+    public User register(UserRequest user) {
+        return restTemplate.exchange("http://localhost:8088/api/register",
+                HttpMethod.POST,
+                new HttpEntity<>(user),
+                new ParameterizedTypeReference<User>() {
+                }).getBody();
+    }
+
 }
