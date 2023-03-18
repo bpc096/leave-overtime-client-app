@@ -183,10 +183,12 @@
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Profile</a>
                                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="#!">My Leave</a>
-                                        <a class="dropdown-item" href="#!">My Overtime</a>
+                                        <!-- <a class="dropdown-item" href="#!">My Leave</a>
+                                        <a class="dropdown-item" href="#!">My Overtime</a> -->
                                         <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#!">Logout</a>
+                                        <form th:action="@{/logout}" th:method="POST">
+                                            <button class="btn btn-danger" type="submit">Logout</button>
+                                        </form>
                                     </div>
                                 </li>
                             </ul>
@@ -209,7 +211,7 @@
                             <div class="d-flex justify-content-lg-start align-items-center pt-1 pb-2"></div>
                             <div class="container px-5 my-5">
                                 <form th:action="${status} == 'create' ? @{'/overtime'} : @{'/overtime/{id}' (id = ${overtime.id})} "
-                                    th:method="${status == 'create' ? 'POST' : 'PUT'}" th:object="${overtime}">
+                                    th:method="${status == 'create' ? 'POST' : 'PUT'}" th:object="${overtimeRequest}">
                                     <div class="mb-3">
                                         <label class="form-label" for="startTime">Start Time</label>
                                         <input class="form-control" id="startTime" type="time" placeholder="Start Time" data-sb-validations="required"  th:field="*{startTime}" />
@@ -236,7 +238,7 @@
                                     </div> -->
                                     <div class="form-floating mb-3">
                                         <!-- <label class="form-label" for="projectName">Project</label> -->
-                                        <select class="form-select" id="projectName" aria-label="Project Name" th:field="*{project.id}">
+                                        <select class="form-select" id="projectName" aria-label="Project Name" th:field="*{projectId}">
                                             <option value="">Select Project</option>
                                             <th:block th:each="proj : ${listProjects}">
                                                 <option th:text="${proj.name}" th:value="${proj.id}"></option>

@@ -35,7 +35,7 @@ public class OvertimeController {
     }
 
     @GetMapping("/create-form")
-    public String createForm(Model model, Overtime overtimes) {
+    public String createForm(Model model, OvertimeRequest overtimes) {
         List<Project> projects = projectService.getAll();
         model.addAttribute("listProjects", projects);
         model.addAttribute("status", "create");
@@ -44,7 +44,7 @@ public class OvertimeController {
     }
 
     @PostMapping
-    public String create(Overtime overtime) {
+    public String create(OvertimeRequest overtime) {
         overtimeService.create(overtime);
         return "redirect:/overtime";
     }
@@ -61,7 +61,7 @@ public class OvertimeController {
     }
 
     @PutMapping("/{id}")
-    public String update(@PathVariable int id, Overtime overtime) {
+    public String update(@PathVariable int id, OvertimeRequest overtime) {
         overtimeService.update(id, overtime);
         return "redirect:/overtime";
     }

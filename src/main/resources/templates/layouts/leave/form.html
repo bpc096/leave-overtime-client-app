@@ -183,10 +183,12 @@
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Profile</a>
                                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="#!">My Leave</a>
-                                        <a class="dropdown-item" href="#!">My Overtime</a>
+                                        <!-- <a class="dropdown-item" href="#!">My Leave</a>
+                                        <a class="dropdown-item" href="#!">My Overtime</a> -->
                                         <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#!">Logout</a>
+                                        <form th:action="@{/logout}" th:method="POST">
+                                            <button class="btn btn-danger" type="submit">Logout</button>
+                                        </form>
                                     </div>
                                 </li>
                             </ul>
@@ -208,8 +210,8 @@
                         <div class="card-body">
                             <div class="d-flex justify-content-lg-start align-items-center pt-1 pb-2"></div>
                             <div class="container px-5 my-5">
-                                <form th:action="${status} == 'create' ? @{'/leave'} : @{'/leave/{id}' (id = ${leave.id})} "
-                                    th:method="${status == 'create' ? 'POST' : 'PUT'}" th:object="${leave}">
+                                <form th:action="@{'/leave'}"
+                                    th:method="POST" th:object="${leave}">
                                     <div class="mb-3">
                                         <label class="form-label" for="startday">Start Date</label>
                                         <input class="form-control" id="startday" type="date" placeholder="Start Date" data-sb-validations="required"  th:field="*{startday}" />

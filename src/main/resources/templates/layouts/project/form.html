@@ -183,10 +183,12 @@
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Profile</a>
                                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="#!">My Leave</a>
-                                        <a class="dropdown-item" href="#!">My Overtime</a>
+                                        <!-- <a class="dropdown-item" href="#!">My Leave</a>
+                                        <a class="dropdown-item" href="#!">My Overtime</a> -->
                                         <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#!">Logout</a>
+                                        <form th:action="@{/logout}" th:method="POST">
+                                            <button class="btn btn-danger" type="submit">Logout</button>
+                                        </form>
                                     </div>
                                 </li>
                             </ul>

@@ -1,10 +1,13 @@
 package com.mii.clientapp.controller;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import com.mii.clientapp.model.Leave;
+import com.mii.clientapp.model.Status;
 import com.mii.clientapp.model.dto.LeaveRequest;
 import com.mii.clientapp.service.LeaveService;
 
@@ -43,10 +46,12 @@ public class LeaveController {
 
     @GetMapping("/update-form/{id}")
     public String updateForm(Model model, @PathVariable int id) {
+        // List<Status> projects = statusService.getAll();
+        // model.addAttribute("listProjects", projects); 
         model.addAttribute("leave", leaveService.getById(id));
-        model.addAttribute("status", "update");
-        model.addAttribute("title", "Update Leave");
-        return "layouts/leave/form";
+        // model.addAttribute("status", "update");
+        // model.addAttribute("title", "Update Leave");
+        return "layouts/leave/formup";
     }
 
     @PutMapping("/{id}")
