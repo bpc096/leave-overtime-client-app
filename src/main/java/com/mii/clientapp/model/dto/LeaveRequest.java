@@ -1,20 +1,18 @@
 package com.mii.clientapp.model.dto;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 
 import lombok.Data;
 
 @Data
-public class OvertimeRequest {
-    
-    private LocalTime startTime;
-    private LocalTime endTime;
+public class LeaveRequest {
+    private LocalDate startday;
+    private LocalDate endday;
     private LocalDateTime applydate;
-    private String purpose;
     private String updateby;
-    private Integer responsetime;
+    private String reason;
+    private LocalDateTime respontime;
     private Integer employeeId;
     private Integer statusId;
-    private Integer projectId;
 }

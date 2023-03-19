@@ -185,8 +185,8 @@
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
                                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="#!">My Leave</a>
-                                        <a class="dropdown-item" href="#!">My Overtime</a>
+                                        <!-- <a class="dropdown-item" href="#!">My Leave</a>
+                                        <a class="dropdown-item" href="#!">My Overtime</a> -->
                                         <div class="dropdown-divider"></div>
                                         <form th:action="@{/logout}" th:method="POST">
                                             <button class="btn btn-danger" type="submit">Logout</button>
@@ -229,7 +229,7 @@
                                                 <th class="col-1">Project Title <i class="fa fa-sort"></i></th>
                                                 <th class="col-1">Budget<i class="fa fa-sort"></i></th>
                                                 <th class="col-1">Project Team<i class="fa fa-sort"></i></th>
-                                                <th class="col-1">Project Overtime<i class="fa fa-sort"></i></th>
+                                                
                                                 <th class="col-1">Action</th>
                                             </tr>
                                         </thead>
@@ -237,11 +237,20 @@
                                             <tr th:each="project : ${projects}">
                                                 <td th:text="${project.name}"></td>
                                                 <td th:text="${project.overtimeBudget}"></td>
-                                                <td th:text="${project.employees}"></td>
-                                                <td th:text="${project.overtime}"></td>
+                                                <!-- <td th:if="${project.employees != null}">
+                                                    <span th:text="${project.employees.name}"></span>
+                                                </td>
+                                                <td th:if="${project.employees == null}"></td> -->
+                                                <td th:each="emp : ${project.employees}">
+                                                    <span th:text="${emp.name}"></span> <br>
+                                                </td>
+                                                
                                                 <td>
                                                     <a th:href="@{/project/{id} (id=${project.id})}" class="view" title="View" data-bs-toggle="modal" data-bs-target="#detailProject"><i class="material-icons">&#xE417;</i></a>
                                                     <a th:href="@{/project/update-form/{id} (id = ${project.id})}" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <a class="btn btn-success" th:href="@{/project/create-formemp}">Add Employe</a>
+                                                    </div>
                                                     <form th:action="@{/project/{id} (id = ${project.id})}" th:method="DELETE"
                                                         onclick="return confirm('Are you sure want to delete this data???')">
                                                         <button class="btn btn-danger px-1" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i> </button>
