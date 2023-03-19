@@ -1,7 +1,6 @@
 package com.mii.clientapp.model;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 import lombok.*;
 
@@ -17,5 +16,4 @@ public class Employee {
     private String address;
     private String email;
     private String phone;
-    // private Employee employee;
 }

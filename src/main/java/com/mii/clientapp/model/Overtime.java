@@ -2,7 +2,6 @@ package com.mii.clientapp.model;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
