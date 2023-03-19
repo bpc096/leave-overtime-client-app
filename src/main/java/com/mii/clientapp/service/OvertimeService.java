@@ -39,7 +39,7 @@ public class OvertimeService {
                 }).getBody();
     }
 
-    public Overtime update(int id, Overtime overtime) {
+    public Overtime update(int id, OvertimeRequest overtime) {
         return restTemplate.exchange("http://localhost:8088/api/overtime/" + id,
                 HttpMethod.PUT,
                 new HttpEntity<>(overtime),

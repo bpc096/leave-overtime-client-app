@@ -211,15 +211,15 @@
                             <div class="d-flex justify-content-lg-start align-items-center pt-1 pb-2"></div>
                             <div class="container px-5 my-5">
                                 <form th:action="${status} == 'create' ? @{'/overtime'} : @{'/overtime/{id}' (id = ${overtime.id})} "
-                                    th:method="${status == 'create' ? 'POST' : 'PUT'}" th:object="${overtime}">
+                                    th:method="${status == 'create' ? 'POST' : 'PUT'}" th:object="${overtimeRequest}">
                                     <div class="mb-3">
-                                        <label class="form-label" for="starttime">Start Time</label>
-                                        <input class="form-control" id="starttime" type="text" placeholder="Start Time" data-sb-validations="required"  th:field="*{startTime}" />
-                                        <div class="invalid-feedback" data-sb-feedback="starttime:required">Start Time is required.</div>
+                                        <label class="form-label" for="startTime">Start Time</label>
+                                        <input class="form-control" id="startTime" type="time" placeholder="Start Time" data-sb-validations="required"  th:field="*{startTime}" />
+                                        <!-- <div class="invalid-feedback" data-sb-feedback="starttime:required">Start Time is required.</div> -->
                                     </div>
                                     <div class="mb-3">
-                                        <label class="form-label" for="endtime">End Time</label>
-                                        <input class="form-control" id="endtime" type="text" placeholder="End Time" data-sb-validations="required"  th:field="*{endTime}" />
+                                        <label class="form-label" for="endTime">End Time</label>
+                                        <input class="form-control" id="endtime" type="time" placeholder="End Time" data-sb-validations="required"  th:field="*{endTime}" />
                                         <div class="invalid-feedback" data-sb-feedback="endtime:required">End Time is required.</div>
                                     </div>
                                     <div class="mb-3">
@@ -227,18 +227,18 @@
                                         <input class="form-control" id="purpose" type="text" placeholder="Purpose" data-sb-validations="required"  th:field="*{purpose}" />
                                         <div class="invalid-feedback" data-sb-feedback="purpose:required">Purpose is required.</div>
                                     </div>
-                                    <div class="mb-3">
+                                    <!-- <div class="mb-3">
                                         <label class="form-label" for="updateby">Update By</label>
                                         <input class="form-control" id="updateby" type="text" placeholder="Update By" data-sb-validations="required"  th:field="*{updateby}" />
-                                    </div>
-                                    <div class="mb-3">
+                                    </div> -->
+                                    <!-- <div class="mb-3">
                                         <label class="form-label" for="employeeId">Employee ID</label>
-                                        <input class="form-control" id="employeeId" type="text" placeholder="Employee Id" data-sb-validations="required"  th:field="*{employee.id}" />
+                                        <input class="form-control" id="employeeId" type="text" placeholder="Employee Id" data-sb-validations="required"  th:field="*{employeeId}" />
                                         <div class="invalid-feedback" data-sb-feedback="employeeId:required">Employee is required.</div>
-                                    </div>
+                                    </div> -->
                                     <div class="mb-3">
                                         <label class="form-label" for="projectId">Project ID</label>
-                                        <input class="form-control" id="projectId" type="text" placeholder="Project Id" data-sb-validations="required"  th:field="*{project.id}" />
+                                        <input class="form-control" id="projectId" type="text" placeholder="Project Id" data-sb-validations="required"  th:field="*{projectId}" />
                                         <div class="invalid-feedback" data-sb-feedback="projectId:required">Project is required.</div>
                                     </div>
                                     <div class="d-grid">

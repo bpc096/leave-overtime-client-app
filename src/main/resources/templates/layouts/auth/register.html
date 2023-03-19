@@ -27,10 +27,26 @@
 					<div class="card shadow-lg">
 						<div class="card-body p-5">
 							<h1 class="fs-4 card-title fw-bold mb-4">Register</h1>
-							<form method="POST" class="needs-validation" novalidate="" autocomplete="off">
+							<form th:action="@{/register}" th:method="POST" th:object="${userRequest}" class="needs-validation" novalidate="" autocomplete="off">
+								<div class="mb-3">
+									<label class="mb-2 text-muted" for="username">Username</label>
+									<input id="username" type="text" class="form-control" placeholder="Username" name="username" value="" required autofocus>
+									<div class="invalid-feedback">
+										Username is required	
+									</div>
+								</div>
+
+								<div class="mb-3">
+									<label class="mb-2 text-muted" for="password">Password</label>
+									<input id="password" type="password" class="form-control" placeholder="Password" name="password" required>
+								    <div class="invalid-feedback">
+								    	Password is required
+							    	</div>
+								</div>
+
 								<div class="mb-3">
 									<label class="mb-2 text-muted" for="name">Name</label>
-									<input id="name" type="text" class="form-control" name="name" value="" required autofocus>
+									<input id="name" type="text" class="form-control" placeholder="Name" name="name" value="" required autofocus>
 									<div class="invalid-feedback">
 										Name is required	
 									</div>
@@ -38,18 +54,37 @@
 
 								<div class="mb-3">
 									<label class="mb-2 text-muted" for="email">E-Mail Address</label>
-									<input id="email" type="email" class="form-control" name="email" value="" required>
+									<input id="email" type="email" class="form-control" placeholder="Email" name="email" value="" required>
 									<div class="invalid-feedback">
 										Email is invalid
 									</div>
 								</div>
+								
+								<div class="mb-3">
+									<label class="form-label" for="phoneNumber">Phone Number</label>
+									<input class="form-control" id="phoneNumber" type="text" placeholder="Phone Number" data-sb-validations="required" th:field="*{phone}"/>
+									<div class="invalid-feedback" data-sb-feedback="phoneNumber:required">Phone Number is required.</div>
+								</div>
 
 								<div class="mb-3">
-									<label class="mb-2 text-muted" for="password">Password</label>
-									<input id="password" type="password" class="form-control" name="password" required>
-								    <div class="invalid-feedback">
-								    	Password is required
-							    	</div>
+									<label class="mb-2 text-muted" for="gender">Gender</label>
+									<input id="gender" type="text" class="form-control" placeholder="Gender" name="gender" value="" required autofocus>
+									<div class="invalid-feedback">
+										Gender is required	
+									</div>
+								</div>
+
+								<div class="mb-3">
+									<label class="form-label" for="birthdate">Birthdate</label>
+									<input class="form-control" id="birthdate" type="text" placeholder="Birthdate" data-sb-validations="required" th:field="*{birthdate}"/>
+								</div>	
+
+								<div class="mb-3">
+									<label class="mb-2 text-muted" for="address">Address</label>
+									<input id="address" type="text" class="form-control" placeholder="Address" name="address" value="" required autofocus>
+									<div class="invalid-feedback">
+										Address is required	
+									</div>
 								</div>
 
 								<p class="form-text text-muted mb-3">

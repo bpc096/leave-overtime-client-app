@@ -18,7 +18,7 @@ public class RegisterController {
 
     @GetMapping
     public String registerPage(Model model, UserRequest users) {
-        model.addAttribute("status", "register");
+        // model.addAttribute("status", "register");
         model.addAttribute("title", "Register");
         return "layouts/auth/register";
     }
@@ -26,7 +26,7 @@ public class RegisterController {
     @PostMapping
     public String create(UserRequest user) {
         userService.create(user);
-        return "redirect:/user";
+        return "redirect:/login";
     }
 
 }

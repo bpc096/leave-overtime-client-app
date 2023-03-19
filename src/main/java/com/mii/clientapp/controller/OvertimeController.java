@@ -52,7 +52,7 @@ public class OvertimeController {
     }
 
     @PutMapping("/{id}")
-    public String update(@PathVariable int id, Overtime overtime) {
+    public String update(@PathVariable int id, OvertimeRequest overtime) {
         overtimeService.update(id, overtime);
         return "redirect:/overtime";
     }

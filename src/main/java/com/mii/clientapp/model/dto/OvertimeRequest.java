@@ -16,7 +16,7 @@ public class OvertimeRequest {
     private String purpose;
     private String updateby;
     private LocalDateTime respontime;
-    private Employee employee;
-    private Status status;
-    private Project project;
+    private Integer employeeId;
+    private Integer statusId;
+    private Integer projectId;
 }
